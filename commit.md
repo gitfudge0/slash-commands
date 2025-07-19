@@ -26,9 +26,7 @@ git log --oneline -5
 
 ### 3. Add Files
 ```bash
-git add .
-```
-*Note: Add relevant untracked files to the staging area. Be careful not to stage files that aren't relevant to the commit.*
+git add -A
 
 ### 4. Create Conventional Commit
 ```bash
