@@ -1,133 +1,273 @@
-# Workflow Guide - Which Command to Use and When
+# Workflow Guide - Kira-Inspired Development System
 
-## Quick Reference
+## Overview
+This system implements a structured 5-phase development workflow inspired by Kira's concept → requirements → design → tasks → implementation approach, with comprehensive documentation generation and interactive quality control.
+
+## 🚀 Quick Reference
 
 ### Starting Points
-- **New Feature Idea** → `idea-to-prd.md`
-- **Existing Issue/Bug** → `issue-to-prd.md`
-- **UI/Frontend Work** → `ui-flow-engineer.md`
+- **Any New Work** → `concept.md` (universal entry point)
+- **Need Documentation** → `doc-generator.md` (independent tool)
+- **Workflow Questions** → `workflow.md` (reference guide)
 
-### Implementation Phase
-- **PRD Ready** → `prd-to-tasks.md`
-- **Task Implementation** → `process-task.md`
-
-### Quality Assurance
-- **Any Workflow** → `validate-and-iterate.md` (use alongside other commands)
-
-## Complete Workflows
-
-### 1. Feature Development Flow
+### 5-Phase Development Flow
 ```
-idea-to-prd.md → prd-to-tasks.md → process-task.md
+concept.md → requirements.md → design.md → tasks.md → implement.md
 ```
-**When to use**: Starting with a new feature concept or enhancement idea
+
+## Complete Workflow
+
+### The Kira-Inspired Process
+```mermaid
+flowchart LR
+    A[concept.md] --> B[requirements.md]
+    B --> C[design.md]
+    C --> D[tasks.md]
+    D --> E[implement.md]
+    
+    F[doc-generator.md] -.-> B
+    
+    style A fill:#e1f5fe
+    style E fill:#e8f5e8
+    style F fill:#fff3e0
+```
+
+**When to use**: All development work - features, bugs, enhancements, new projects
 
 **Process**:
-1. Transform idea into structured PRD with stakeholder analysis
-2. Generate Technical Design Document and break into tasks
-3. Implement tasks with optional iterative validation
+1. **Concept**: Capture and clarify the problem or opportunity (30-60 min)
+2. **Requirements**: Create detailed specifications with user stories (1-3 hours)
+3. **Design**: Generate technical architecture and UI design (2-4 hours)
+4. **Tasks**: Break down into implementable tasks with dependencies (1-2 hours)
+5. **Implementation**: Execute with interactive validation and quality gates (variable)
 
-### 2. Issue Resolution Flow
-```
-issue-to-prd.md → prd-to-tasks.md → process-task.md
-```
-**When to use**: Addressing bugs, technical debt, or reported issues
+## Phase Details
 
-**Process**:
-1. Analyze issue and create solution-focused PRD
-2. Generate technical implementation plan and tasks
-3. Execute fixes with validation steps
+### Phase 1: Concept (`concept.md`)
+**Purpose**: Problem definition and solution approach
+- Universal entry point for all workflows
+- Creates `tasks/<issue-name>/01-concept.md`
+- Interactive clarification of problem scope and success criteria
+- Stakeholder impact analysis with ASCII visualizations
 
-### 3. UI/Frontend Development Flow
-```
-ui-flow-engineer.md → validate-and-iterate.md
-```
-**When to use**: Creating new UI components, pages, or design systems
+### Phase 2: Requirements (`requirements.md`)
+**Purpose**: Comprehensive requirements documentation  
+- Validates concept completion before proceeding
+- Creates multiple requirement documents (`02-*.md`)
+- Industry-standard requirements with user stories and acceptance criteria
+- Mermaid user journey diagrams and stakeholder matrices
 
-**Process**:
-1. Interactive 4-phase design (Layout → Theme → Animation → Implementation)
-2. Quality validation with user feedback and refinement
+### Phase 3: Design (`design.md`)
+**Purpose**: Technical architecture and UI specifications
+- Validates concept + requirements before proceeding
+- Creates comprehensive design documentation (`03-*.md`)
+- **Integrated UI Flow**: Interactive wireframe → design → interactions → animations
+- System architecture, API specs, database design, security architecture
 
-### 4. Standalone Task Flow
-```
-process-task.md
-```
-**When to use**: Working on pre-defined tasks or quick implementations
+### Phase 4: Tasks (`tasks.md`)
+**Purpose**: Granular task breakdown with dependencies
+- Validates all previous phases before proceeding
+- Creates detailed implementation plan (`04-*.md`)
+- Tasks broken into 2-4 hour chunks with clear dependencies
+- Gantt charts, resource allocation, risk assessment
 
-**Modes**:
-- **Autonomous**: Direct implementation
-- **Iterative**: Phase-by-phase validation with user approval
+### Phase 5: Implementation (`implement.md`)
+**Purpose**: Interactive execution with quality validation
+- Validates complete planning before proceeding
+- Multiple execution modes: Interactive, Autonomous, Custom
+- Task-by-task approval with modification capabilities
+- Comprehensive implementation logging (`05-*.md`)
 
-## Integration Patterns
+## File Organization
 
-### Quality-First Approach
-Add `validate-and-iterate.md` to any workflow:
+### Issue-Based Structure
 ```
-[any-workflow] + validate-and-iterate.md
+project-root/
+├── tasks/
+│   └── <issue-name>/           # All files for one issue
+│       ├── 00-project-context.md    (optional, from doc-generator)
+│       ├── 01-concept.md             (Phase 1)
+│       ├── 02-requirements.md        (Phase 2)
+│       ├── 02-stakeholder-matrix.md
+│       ├── 02-user-stories.md
+│       ├── 03-technical-design.md    (Phase 3)
+│       ├── 03-ui-design.md          (if UI needed)
+│       ├── 03-api-specs.md
+│       ├── 04-task-breakdown.md      (Phase 4)
+│       ├── 04-implementation-plan.md
+│       ├── 05-implementation-log.md  (Phase 5)
+│       └── 05-code-changes.md
+└── [workflow command files]
 ```
-Use 1-10 scoring system for continuous quality improvement
 
-### UI-Enhanced Feature Development
-For features with significant UI components:
-```
-idea-to-prd.md → ui-flow-engineer.md → prd-to-tasks.md → process-task.md
+## Command Reference
+
+### Core Workflow Commands
+| Command | Phase | Prerequisites | Duration | Output Files |
+|---------|-------|---------------|----------|--------------|
+| `concept.md` | 1 | None | 30-60 min | `01-concept.md` |
+| `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-*.md` files |
+| `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-*.md` files |
+| `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-*.md` files |
+| `implement.md` | 5 | Phases 1-4 | Variable | `05-*.md` + code |
+
+### Supporting Tools
+| Command | Purpose | Dependencies | Usage |
+|---------|---------|--------------|-------|
+| `doc-generator.md` | Create README.md | None | Independent documentation |
+| `workflow.md` | Reference guide | None | Process documentation |
+
+## Key Features
+
+### 🔒 Phase Validation
+- Each phase validates prerequisites before starting
+- Clear error messages with suggested actions
+- No phase can proceed without completing previous phases
+
+### 📊 Rich Documentation  
+- **Mermaid Diagrams**: Architecture, user journeys, Gantt charts
+- **ASCII Wireframes**: UI layouts and system diagrams
+- **Structured Tables**: Requirements matrices, API specs, task breakdowns
+
+### 🤖 Interactive Questioning
+- Comprehensive clarification loops in each phase
+- Context-aware follow-up questions
+- No gaps in understanding before proceeding
+
+### 📁 Issue Organization
+- All files stored in `tasks/<issue-name>/` directories
+- Multiple issues can be developed simultaneously
+- Clean separation and context preservation
+
+### ⚡ Execution Modes
+- **Interactive Mode**: Task-by-task approval and modification
+- **Autonomous Mode**: Automated execution with oversight
+- **Custom Mode**: Choose specific tasks to execute
+
+## Usage Patterns
+
+### 1. New Feature Development
+```bash
+# Complete workflow for new feature
+./concept.md          # Define the problem and solution
+./requirements.md     # Detailed functional requirements
+./design.md          # Technical architecture + UI design  
+./tasks.md           # Break down implementation
+./implement.md       # Execute with quality gates
 ```
 
-### Technical Debt Resolution
-For architecture improvements:
+### 2. Bug Fix or Issue Resolution
+```bash
+# Same workflow applies to problems
+./concept.md          # Analyze root cause and approach
+./requirements.md     # Define fix requirements
+./design.md          # Plan technical changes
+./tasks.md           # Break down fix tasks
+./implement.md       # Execute with testing
 ```
-issue-to-prd.md → prd-to-tasks.md (emphasize TDD) → process-task.md (iterative mode)
+
+### 3. UI-Heavy Features
+```bash
+./concept.md          # Include UI requirements in concept
+./requirements.md     # Document UX requirements
+./design.md          # Choose interactive UI flow
+# → Wireframes → Design → Interactions → Animations
+./tasks.md           # UI + backend task breakdown
+./implement.md       # Integrated implementation
+```
+
+### 4. Documentation Only
+```bash
+./doc-generator.md    # Independent README generation
+# Can create project context for main workflow
 ```
 
 ## Decision Tree
 
-### Start Here: What are you working on?
+### What are you working on?
 
-**🎯 New Feature/Enhancement**
-- Business requirement? → `idea-to-prd.md`
-- UI/Design heavy? → `ui-flow-engineer.md`
-- Technical architecture? → `idea-to-prd.md` + detailed TDD
+**🎯 Any Development Work**
+- Always start with: `concept.md`
+- Follow through all 5 phases for best results
+- Use interactive modes for maximum quality
 
-**🐛 Bug/Issue/Problem**
-- Reported issue? → `issue-to-prd.md`
-- Quick fix? → `process-task.md` (autonomous)
-- Complex root cause? → `issue-to-prd.md` → iterative flow
+**📚 Documentation Only**  
+- Use: `doc-generator.md`
+- Creates comprehensive README.md
+- Independent of main workflow
 
-**💻 Implementation Work**
-- Have PRD? → `prd-to-tasks.md`
-- Have tasks? → `process-task.md`
-- Need design? → `ui-flow-engineer.md`
+**❓ Process Questions**
+- Refer to: `workflow.md`
+- Complete reference guide
+- Troubleshooting and tips
 
-**🔍 Quality/Refinement**
-- Any deliverable → `validate-and-iterate.md`
+## Best Practices
 
-## Command Characteristics
+### Workflow Discipline
+1. **Never Skip Phases**: Each phase builds critical context
+2. **Answer All Questions**: Comprehensive input leads to better output
+3. **Review Before Proceeding**: Validate each phase before continuing
+4. **Use Descriptive Issue Names**: Clear kebab-case names (e.g., 'google-auth-integration')
 
-| Command | Input Required | Output | Interactive | Best For |
-|---------|---------------|--------|-------------|----------|
-| `idea-to-prd.md` | Feature idea | Structured PRD | Yes | Business requirements |
-| `issue-to-prd.md` | Issue description | Solution PRD | Yes | Problem solving |
-| `ui-flow-engineer.md` | UI requirements | Complete UI implementation | Yes | Frontend development |
-| `prd-to-tasks.md` | PRD document | TDD + Task list | Minimal | Technical planning |
-| `process-task.md` | Task description | Implementation | Optional | Development execution |
-| `validate-and-iterate.md` | Any deliverable | Quality report + improvements | Yes | Quality assurance |
+### Quality Assurance
+1. **Interactive Mode First**: Use interactive mode for unfamiliar workflows
+2. **Validate Early**: Review generated documentation before proceeding
+3. **Iterative Refinement**: Return to earlier phases if requirements change
+4. **Comprehensive Testing**: Implementation phase includes quality gates
 
-## Usage Tips
+### Team Collaboration
+1. **Consistent Issue Names**: Team members can collaborate on same issues
+2. **Documentation Review**: Share phase outputs with appropriate stakeholders
+3. **Parallel Development**: Multiple issues can be developed simultaneously
+4. **Knowledge Sharing**: Generated docs serve as team knowledge base
 
-### For Teams
-- **Product Managers**: Start with `idea-to-prd.md` or `issue-to-prd.md`
-- **Designers**: Use `ui-flow-engineer.md` for interactive design iteration
-- **Developers**: Jump to `process-task.md` for implementation, use iterative mode for complex work
-- **QA**: Apply `validate-and-iterate.md` to any deliverable for structured testing
+## Comparison with Previous System
 
-### For Solo Development
-1. **Quick wins**: `process-task.md` (autonomous mode)
-2. **New features**: Full flow with `idea-to-prd.md`
-3. **UI work**: Always use `ui-flow-engineer.md` for better design outcomes
-4. **Quality focus**: Add validation step to any workflow
+### What Changed
+- **Linear Structure**: Replaced flexible entry points with structured 5-phase flow
+- **Comprehensive Documentation**: Every phase generates rich, visual documentation
+- **Interactive Questioning**: Deep clarification in each phase prevents gaps
+- **Issue Organization**: Clean file organization in `tasks/<issue-name>/` directories
+- **Prerequisite Validation**: Each phase validates previous phases before proceeding
 
-### Best Practices
-- **Always use TDD step**: Don't skip technical design in `prd-to-tasks.md`
-- **Choose your mode**: Autonomous for speed, Iterative for quality
-- **Validate early**: Use `validate-and-iterate.md` on early deliverables
-- **Document decisions**: Each command creates documentation for future reference
+### What's Better
+- **Kira-like Structure**: Proven concept → requirements → design → tasks → implementation flow
+- **Quality Focus**: Built-in validation and quality gates throughout
+- **Rich Documentation**: Mermaid diagrams, ASCII wireframes, structured tables
+- **Context Preservation**: All issue documentation in one location
+- **Interactive Control**: User validation and modification at every step
+
+## Getting Started
+
+### First Time Usage
+```bash
+# Start with any new work
+./concept.md
+
+# System will prompt for issue name
+# Follow interactive questioning
+# Review generated documentation
+# Proceed to next phase when ready
+```
+
+### Example: Google OAuth Integration
+```bash
+./concept.md          # Issue name: "google-oauth-integration"
+# → Creates tasks/google-oauth-integration/01-concept.md
+
+./requirements.md     # Validates concept, creates detailed requirements  
+# → Creates tasks/google-oauth-integration/02-*.md files
+
+./design.md          # Validates requirements, creates technical design
+# → Detects UI needs, offers interactive design flow
+# → Creates tasks/google-oauth-integration/03-*.md files
+
+./tasks.md           # Validates design, creates implementation plan
+# → Creates tasks/google-oauth-integration/04-*.md files
+
+./implement.md       # Validates planning, executes tasks
+# → Interactive mode with task-by-task approval
+# → Creates implementation log and actual code
+```
+
+This Kira-inspired system provides structured, comprehensive, and quality-focused development workflows with rich documentation and interactive control throughout the entire process.
