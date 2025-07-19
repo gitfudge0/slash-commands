@@ -70,7 +70,7 @@ git commit -m "fix: resolve memory leak in data processing module"
 
 ## Notes
 - Always use the git context to determine which files are relevant to your commit
-- NEVER update the git config
+- NEVER update the git config. Modifying the Git configuration can disrupt shared workflows, introduce security vulnerabilities, or cause unexpected behavior in automated environments. Only update the Git configuration if you fully understand the implications and have explicit approval in a shared or team setting.
 - DO NOT push to remote repository (use separate push command if needed)
 - Ensure commit message is meaningful and concise
 - Use HEREDOC format for proper commit message formatting
