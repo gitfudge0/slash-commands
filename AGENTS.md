@@ -1,7 +1,7 @@
-# AGENTS.md - Kira-Inspired Development System
+# AGENTS.md - Structured Development System
 
 ## Repository Overview
-This repository contains a comprehensive 5-phase development workflow system inspired by Kira AI's approach. The system transforms concepts through structured phases to final implementation with rich documentation and interactive quality control.
+This repository contains a comprehensive 5-phase development workflow system. The system transforms concepts through structured phases to final implementation with rich documentation and interactive quality control.
 
 ## Workflow Structure
 
@@ -154,4 +154,4 @@ Co-Authored-By: opencode <noreply@opencode.ai>"
 - **Security review**: Include security considerations in design phase
 - **Testing integration**: Implementation phase includes comprehensive testing
 
-This Kira-inspired system provides structured, comprehensive development workflows that ensure thorough planning, rich documentation, and quality implementation through interactive user guidance and validation.
+This structured system provides comprehensive development workflows that ensure thorough planning, rich documentation, and quality implementation through interactive user guidance and validation.

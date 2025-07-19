@@ -1,7 +1,7 @@
 # Workflow - Execution Order & Phase Management
 
 ## Purpose
-Reference guide outlining the proper execution order of workflow phases, dependencies, and transition requirements for the Kira-inspired development system.
+Reference guide outlining the proper execution order of workflow phases, dependencies, and transition requirements for the structured development system.
 
 ## Workflow Overview
 
