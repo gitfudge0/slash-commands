@@ -43,10 +43,10 @@ flowchart LR
 - **Quality Gates**: Built-in validation and quality checkpoints
 
 **Process**:
-1. **Concept**: Interactive problem clarification with stakeholder analysis (30-60 min)
-2. **Requirements**: Comprehensive requirements gathering with user stories (1-3 hours)  
+1. **Concept**: Interactive problem clarification with technical constraint identification (30-60 min)
+2. **Requirements**: Product Requirements Document (PRD) creation with acceptance criteria (1-3 hours)  
 3. **Design**: Technical architecture with optional interactive UI design flow (2-4 hours)
-4. **Tasks**: Granular task breakdown with dependency analysis (1-2 hours)
+4. **Tasks**: Granular task breakdown with user story creation from PRD (1-2 hours)
 5. **Implementation**: Interactive execution with task-by-task approval (variable)
 
 ## Phase Details
@@ -57,14 +57,14 @@ flowchart LR
 - Creates `tasks/<issue-name>/01-concept.md`
 - **Interactive Process**: Deep clarification of problem scope, solution approach, and acceptance criteria
 - **User Confirmation**: Explicit approval before generating concept document
-- Stakeholder impact analysis and constraint identification
+- Technical constraint identification
 
 ### Phase 2: Requirements (`requirements.md`)
-**Purpose**: Comprehensive requirements documentation with user story integration
+**Purpose**: Comprehensive requirements documentation as Product Requirements Document (PRD)
 - **Prerequisites**: Validates concept completion before proceeding
-- Creates multiple requirement documents (`02-*.md` files)
-- **Interactive Process**: Functional/non-functional requirements, business rules, user workflows
-- **Rich Documentation**: User stories with acceptance criteria, data models, API requirements
+- Creates single PRD file (`02-prd.md`)
+- **Interactive Process**: Functional/non-functional requirements, business rules
+- **Rich Documentation**: Comprehensive requirements with acceptance criteria included at the end
 - **User Confirmation**: Complete review and approval before document generation
 
 ### Phase 3: Design (`design.md`)
@@ -76,10 +76,10 @@ flowchart LR
 - **User Confirmation**: Full design review and approval before generation
 
 ### Phase 4: Tasks (`tasks.md`)
-**Purpose**: Granular task breakdown with comprehensive dependency analysis
+**Purpose**: Granular task breakdown with comprehensive dependency analysis and user story creation
 - **Prerequisites**: Validates all previous phases before proceeding
 - **Interactive Process**: Implementation approach, task granularity, risk assessment
-- **Rich Documentation**: Task breakdown with user story integration, Gantt charts, quality gates
+- **Rich Documentation**: Task breakdown with user stories created from PRD and TDD, Gantt charts, quality gates
 - **User Confirmation**: Complete planning review before task generation
 
 ### Phase 5: Implementation (`implement.md`)
@@ -98,13 +98,12 @@ project-root/
 │   └── <issue-name>/           # All files for one issue
 │       ├── 00-project-context.md    (optional, from doc-generator)
 │       ├── 01-concept.md             (Phase 1)
-│       ├── 02-requirements.md        (Phase 2)
-│       ├── 02-stakeholder-matrix.md
-│       ├── 02-user-stories.md
+│       ├── 02-prd.md                 (Phase 2 - Product Requirements Document)
 │       ├── 03-technical-design.md    (Phase 3)
 │       ├── 03-ui-design.md          (if UI needed)
 │       ├── 03-api-specs.md
 │       ├── 04-task-breakdown.md      (Phase 4)
+│       ├── 04-user-stories.md        (created in Phase 4 from PRD)
 │       ├── 04-implementation-plan.md
 │       ├── 05-implementation-log.md  (Phase 5)
 │       └── 05-code-changes.md
@@ -117,7 +116,7 @@ project-root/
 | Command | Phase | Prerequisites | Duration | Output Files |
 |---------|-------|---------------|----------|--------------|
 | `concept.md` | 1 | None | 30-60 min | `01-concept.md` |
-| `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-*.md` files |
+| `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-prd.md` |
 | `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-*.md` files |
 | `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-*.md` files |
 | `implement.md` | 5 | Phases 1-4 | Variable | `05-*.md` + code |

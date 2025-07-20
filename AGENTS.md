@@ -21,9 +21,9 @@ This is a markdown-based workflow system offering a comprehensive 5-phase develo
 
 ### 5-Phase Development Process (4.5-10.5 hours)
 1. **concept.md** - Problem definition (30-60 min) → `tasks/<issue>/01-concept.md`
-2. **requirements.md** - Detailed specifications (1-3 hours) → Multiple requirement files
+2. **requirements.md** - Product Requirements Document (1-3 hours) → `tasks/<issue>/02-prd.md`
 3. **design.md** - Technical architecture (2-4 hours) → Design documentation  
-4. **tasks.md** - Task breakdown (1-2 hours) → Implementation planning
+4. **tasks.md** - Task breakdown with user stories (1-2 hours) → Implementation planning
 5. **implement.md** - Interactive execution → Code changes with quality gates
 
 ## File Organization
