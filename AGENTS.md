@@ -14,7 +14,12 @@ This is a markdown-based workflow system offering a comprehensive 5-phase develo
 - **Markdown Structure**: Use `# Phase Name` for main headings, `## Section`, `### Subsection`
 - **Documentation**: Include Mermaid diagrams, ASCII wireframes, structured tables
 - **Validation Logic**: Each phase must validate prerequisites and provide clear error messages
-- **Interactive Design**: Engage users with comprehensive clarification questions before proceeding
+- **Interactive Design**: Engage users with logical question groups (3-5 questions per group)
+- **Question Format**: Numbered questions with alphabetical answers (A/B/C/D/E, always include "Other, I'll specify")
+- **Answer Types**: Select one, select multiple, or enter text
+- **Phase Progression**: Yes/No confirmations between major phase sections
+- **UI Component Flow**: Component-by-component design (wireframe→flow→interactions→animations) - imperative completion
+- **Easy Response Format**: Users respond with "1-B", "2-A,C,F", etc.
 - **Content Standards**: Rich documentation with visual elements, complete coverage, no gaps
 
 ## Workflow Execution
