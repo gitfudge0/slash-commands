@@ -1,24 +1,14 @@
-# Quick Start - Choose Your Speed
+# Quick Start - Development Workflow
 
-## 🚀 Express Workflow (5-15 minutes)
-**For rapid development start**
-```bash
-./express.md
-```
-- Minimal questions (2-3 max)
-- Single consolidated plan
-- Implementation-ready in minutes
-- Perfect for: known problems, simple-medium complexity
-
-## 🔧 Full Workflow (4.5-10.5 hours)  
-**For comprehensive planning**
+## 🔧 5-Phase Development Workflow (4.5-10.5 hours)  
+**For comprehensive, quality-focused development**
 ```bash
 ./concept.md → requirements.md → design.md → tasks.md → implement.md
 ```
 - Interactive questioning sessions
 - Rich documentation with diagrams  
 - User confirmation gates
-- Perfect for: complex systems, multiple stakeholders, unclear requirements
+- Perfect for: all development work - features, bugs, enhancements, new projects
 
 ## 📚 Documentation Only
 ```bash
@@ -27,4 +17,4 @@
 
 ---
 
-**New to the system?** Start with `./express.md` to experience rapid development, then graduate to the full workflow for complex projects.
+**Getting Started:** Begin with `./concept.md` for any new development work. The system will guide you through comprehensive interactive questioning to ensure thorough planning and high-quality outcomes.

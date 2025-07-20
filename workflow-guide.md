@@ -8,7 +8,7 @@ This system implements a structured 5-phase development workflow with comprehens
 ### Starting Points
 - **Any New Work** → `concept.md` (universal entry point with interactive clarification)
 - **Need Documentation** → `doc-generator.md` (independent README generation)
-- **Process Questions** → `workflow.md` (comprehensive reference guide)
+- **Process Questions** → This guide (comprehensive reference)
 
 ### 5-Phase Development Flow
 ```
@@ -126,7 +126,6 @@ project-root/
 | Command | Purpose | Dependencies | Usage |
 |---------|---------|--------------|-------|
 | `doc-generator.md` | Create README.md | None | Independent documentation |
-| `workflow.md` | Reference guide | None | Process documentation |
 
 ## Key Features
 
@@ -212,7 +211,7 @@ project-root/
 - Independent of main workflow
 
 **❓ Process Questions**
-- Refer to: `workflow.md`
+- Refer to: This guide
 - Complete reference guide
 - Troubleshooting and tips
 
