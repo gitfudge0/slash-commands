@@ -321,7 +321,7 @@ project-root/
 - Independent of main workflow
 
 **❓ Process Questions**
-- Refer to: This guide
+- Refer to: `workflow-guide.md`
 - Complete reference guide
 - Troubleshooting and tips
 
