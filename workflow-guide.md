@@ -45,9 +45,9 @@ flowchart LR
 **Process**:
 1. **Concept**: Interactive problem clarification with technical constraint identification (30-60 min)
 2. **Requirements**: Product Requirements Document (PRD) creation with acceptance criteria (1-3 hours)  
-3. **Design**: Technical architecture with optional interactive UI design flow (2-4 hours)
-4. **Tasks**: Granular task breakdown with user story creation from PRD (1-2 hours)
-5. **Implementation**: Interactive execution with task-by-task approval (variable)
+3. **Design**: Technical Design Document (TDD) with architecture, UI, API, data models, security (2-4 hours)
+4. **Tasks**: User stories (tasks) with subtasks and dependencies in single tasks.md (1-2 hours)
+5. **Implementation**: Interactive execution with implementation planning and task-by-task approval (variable)
 
 ## Phase Details
 
@@ -68,25 +68,25 @@ flowchart LR
 - **User Confirmation**: Complete review and approval before document generation
 
 ### Phase 3: Design (`design.md`)
-**Purpose**: Technical architecture and comprehensive design specifications
+**Purpose**: Technical Design Document (TDD) creation with comprehensive design specifications
 - **Prerequisites**: Validates concept + requirements before proceeding  
 - **Interactive UI Flow**: Optional wireframes → design → interactions → animations for UI components
 - **Interactive Process**: Architecture decisions, technology stack, security design
-- **Rich Documentation**: System architecture, database design, API specs, UI wireframes
+- **Rich Documentation**: Single consolidated TDD with system architecture, database design, API specs, UI wireframes, and security design
 - **User Confirmation**: Full design review and approval before generation
 
 ### Phase 4: Tasks (`tasks.md`)
-**Purpose**: Granular task breakdown with comprehensive dependency analysis and user story creation
+**Purpose**: Task breakdown with user stories and subtasks, including dependency analysis
 - **Prerequisites**: Validates all previous phases before proceeding
 - **Interactive Process**: Implementation approach, task granularity, risk assessment
-- **Rich Documentation**: Task breakdown with user stories created from PRD and TDD, Gantt charts, quality gates
+- **Rich Documentation**: Single tasks.md with user stories (tasks) and their subtasks for complexity management, plus dependencies
 - **User Confirmation**: Complete planning review before task generation
 
 ### Phase 5: Implementation (`implement.md`)
-**Purpose**: Interactive execution with multiple modes and quality validation
+**Purpose**: Interactive execution with multiple modes, implementation planning, and quality validation
 - **Prerequisites**: Validates complete planning documentation
 - **Execution Modes**: Interactive (task-by-task approval), Autonomous, Custom selection  
-- **Interactive Process**: Task-by-task review, modification options, real-time validation
+- **Interactive Process**: Implementation plan analysis, task-by-task review, modification options, real-time validation
 - **Quality Gates**: Comprehensive testing, validation, and deployment readiness
 
 ## File Organization
@@ -99,12 +99,8 @@ project-root/
 │       ├── 00-project-context.md    (optional, from doc-generator)
 │       ├── 01-concept.md             (Phase 1)
 │       ├── 02-prd.md                 (Phase 2 - Product Requirements Document)
-│       ├── 03-technical-design.md    (Phase 3)
-│       ├── 03-ui-design.md          (if UI needed)
-│       ├── 03-api-specs.md
-│       ├── 04-task-breakdown.md      (Phase 4)
-│       ├── 04-user-stories.md        (created in Phase 4 from PRD)
-│       ├── 04-implementation-plan.md
+│       ├── 03-tdd.md                 (Phase 3 - Technical Design Document)
+│       ├── 04-tasks.md               (Phase 4 - User stories with subtasks and dependencies)
 │       ├── 05-implementation-log.md  (Phase 5)
 │       └── 05-code-changes.md
 └── [workflow command files]
@@ -117,8 +113,8 @@ project-root/
 |---------|-------|---------------|----------|--------------|
 | `concept.md` | 1 | None | 30-60 min | `01-concept.md` |
 | `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-prd.md` |
-| `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-*.md` files |
-| `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-*.md` files |
+| `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-tdd.md` |
+| `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-tasks.md` |
 | `implement.md` | 5 | Phases 1-4 | Variable | `05-*.md` + code |
 
 ### Supporting Tools
