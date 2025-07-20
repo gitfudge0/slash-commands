@@ -8,7 +8,7 @@ This system implements a structured 5-phase development workflow with comprehens
 ### Starting Points
 - **Any New Work** → `concept.md` (universal entry point with interactive clarification)
 - **Need Documentation** → `doc-generator.md` (independent README generation)
-- **Process Questions** → `workflow.md` (comprehensive reference guide)
+- **Process Questions** → this workflow guide (comprehensive reference)
 
 ### 5-Phase Development Flow
 ```
@@ -43,50 +43,161 @@ flowchart LR
 - **Quality Gates**: Built-in validation and quality checkpoints
 
 **Process**:
-1. **Concept**: Interactive problem clarification with stakeholder analysis (30-60 min)
-2. **Requirements**: Comprehensive requirements gathering with user stories (1-3 hours)  
-3. **Design**: Technical architecture with optional interactive UI design flow (2-4 hours)
-4. **Tasks**: Granular task breakdown with dependency analysis (1-2 hours)
-5. **Implementation**: Interactive execution with task-by-task approval (variable)
+1. **Concept**: Interactive problem clarification with technical constraint identification (30-60 min)
+2. **Requirements**: Product Requirements Document (PRD) creation with acceptance criteria (1-3 hours)  
+3. **Design**: Technical Design Document (TDD) with architecture, UI, API, data models, security (2-4 hours)
+4. **Tasks**: User stories (tasks) with subtasks and dependencies in single tasks.md (1-2 hours)
+5. **Implementation**: Interactive execution with implementation planning and task-by-task approval (variable)
+
+### Enhanced Interactive Questioning System
+
+#### Question Format Standards
+All questions use numbered format with alphabetical answers:
+
+**Select One Example:**
+```
+Question 1: What authentication method do you prefer?
+A) JWT tokens
+B) Session-based cookies  
+C) OAuth integration
+D) Multi-factor authentication
+E) Other, I'll specify
+
+Your answer: 1-B
+```
+
+**Select Multiple Example:**
+```
+Question 2: Which security features are required? (Select multiple)
+A) Password complexity requirements
+B) Rate limiting for login attempts
+C) Account lockout after failed attempts
+D) Email verification for registration
+E) Two-factor authentication
+F) Password reset functionality
+G) Other, I'll specify
+
+Your answer: 2-A, C, D, F
+```
+
+**Text Entry Example:**
+```
+Question 3: Describe your specific password complexity requirements:
+
+Your answer: 3-Minimum 8 characters with uppercase, lowercase, and numbers
+```
+
+#### Logical Question Groups
+Questions are organized in related groups (3-5 questions per group) for efficiency:
+
+**Phase 1 Groups:**
+- Problem Definition & Scope (3-4 questions)
+- Solution Approach & Technical Constraints (2-3 questions)
+
+**Phase 2 Groups:**
+- Authentication & Security Requirements (4-5 questions)
+- User Registration & Profile Management (3-4 questions)
+- Business Rules & Validation Logic (3-4 questions)
+
+**Phase 3 Groups:**
+- System Architecture & Technology Stack (4-5 questions)
+- UI Components Identification (2-3 questions)
+- Component-by-Component UI Design (wireframe→flow→interactions→animations)
+- API Design & Specifications (3-4 questions)
+- Data Models & Database Design (3-4 questions)
+- Security Implementation Details (2-3 questions)
+
+**Phase 4 Groups:**
+- Task Breakdown Approach (2-3 questions)
+- User Story Creation & Complexity (3-4 questions)
+- Dependencies & Implementation Order (2-3 questions)
+
+#### Phase Progression Confirmations
+Between each logical group and major phase sections:
+```
+Question 5: ✓ Authentication requirements complete. Ready to move on to user registration requirements? (Y/N)
+
+#### Component-by-Component UI Design Flow
+**Imperative Process** - Must complete all identified UI components before proceeding:
+
+```
+UI Components Identified: Login Form, Registration Form, User Profile (3 components)
+
+Question X: Ready to begin detailed UI design for all 3 components? (Y/N)
+Your answer: X-Y
+
+Working on component 1 of 3: Login Form
+- Wireframe design for Login Form... ✓
+- User flow for Login Form... ✓  
+- Interactions for Login Form... ✓
+- Animations for Login Form... ✓
+
+Question X+1: Component 1 complete. Ready to move to component 2 of 3: Registration Form? (Y/N)
+Your answer: X+1-Y
+
+Working on component 2 of 3: Registration Form
+- Wireframe design for Registration Form... ✓
+- User flow for Registration Form... ✓
+- Interactions for Registration Form... ✓
+- Animations for Registration Form... ✓
+
+[Continues for all components...]
+
+All UI components complete (3 of 3). 
+
+Question X+4: Ready to proceed to API specifications? (Y/N)
+Your answer: X+4-Y
+```
+
+**UI Design Requirements:**
+- Each component gets complete wireframe→flow→interactions→animations treatment
+- Cannot proceed to next TDD section until ALL UI components are finished
+- User confirms completion of each component before moving to next
+- Final confirmation before leaving UI design section
 
 ## Phase Details
+
 
 ### Phase 1: Concept (`concept.md`)
 **Purpose**: Interactive problem definition and solution approach analysis
 - Universal entry point with no prerequisites  
 - Creates `tasks/<issue-name>/01-concept.md`
-- **Interactive Process**: Deep clarification of problem scope, solution approach, and acceptance criteria
+- **Interactive Process**: Logical question groups for problem scope, solution approach, and acceptance criteria
+- **Question Groups**: Problem Definition & Scope (3-4 questions), Solution Approach & Technical Constraints (2-3 questions)
 - **User Confirmation**: Explicit approval before generating concept document
-- Stakeholder impact analysis and constraint identification
+- Technical constraint identification
 
 ### Phase 2: Requirements (`requirements.md`)
-**Purpose**: Comprehensive requirements documentation with user story integration
+**Purpose**: Comprehensive requirements documentation as Product Requirements Document (PRD)
 - **Prerequisites**: Validates concept completion before proceeding
-- Creates multiple requirement documents (`02-*.md` files)
-- **Interactive Process**: Functional/non-functional requirements, business rules, user workflows
-- **Rich Documentation**: User stories with acceptance criteria, data models, API requirements
+- Creates single PRD file (`02-prd.md`)
+- **Interactive Process**: Logical question groups for functional/non-functional requirements, business rules
+- **Question Groups**: Authentication & Security (4-5 questions), User Registration & Profile (3-4 questions), Business Rules & Validation (3-4 questions)
+- **Rich Documentation**: Comprehensive requirements with acceptance criteria included at the end
 - **User Confirmation**: Complete review and approval before document generation
 
 ### Phase 3: Design (`design.md`)
-**Purpose**: Technical architecture and comprehensive design specifications
+**Purpose**: Technical Design Document (TDD) creation with comprehensive design specifications
 - **Prerequisites**: Validates concept + requirements before proceeding  
-- **Interactive UI Flow**: Optional wireframes → design → interactions → animations for UI components
-- **Interactive Process**: Architecture decisions, technology stack, security design
-- **Rich Documentation**: System architecture, database design, API specs, UI wireframes
+- **Interactive Process**: Logical question groups for architecture, technology stack, security design
+- **Question Groups**: System Architecture (4-5 questions), UI Components Identification (2-3 questions), API Design (3-4 questions), Data Models (3-4 questions), Security Implementation (2-3 questions)
+- **Component-by-Component UI Flow**: **IMPERATIVE** - Each UI component gets wireframe→flow→interactions→animations before proceeding
+- **Rich Documentation**: Single consolidated TDD with system architecture, database design, API specs, UI wireframes, and security design
 - **User Confirmation**: Full design review and approval before generation
 
 ### Phase 4: Tasks (`tasks.md`)
-**Purpose**: Granular task breakdown with comprehensive dependency analysis
+**Purpose**: Task breakdown with user stories and subtasks, including dependency analysis
 - **Prerequisites**: Validates all previous phases before proceeding
-- **Interactive Process**: Implementation approach, task granularity, risk assessment
-- **Rich Documentation**: Task breakdown with user story integration, Gantt charts, quality gates
+- **Interactive Process**: Logical question groups for implementation approach, task granularity, risk assessment
+- **Question Groups**: Task Breakdown Approach (2-3 questions), User Story Creation & Complexity (3-4 questions), Dependencies & Implementation Order (2-3 questions)
+- **Rich Documentation**: Single tasks.md with user stories (tasks) and their subtasks for complexity management, plus dependencies
 - **User Confirmation**: Complete planning review before task generation
 
 ### Phase 5: Implementation (`implement.md`)
-**Purpose**: Interactive execution with multiple modes and quality validation
+**Purpose**: Interactive execution with multiple modes, implementation planning, and quality validation
 - **Prerequisites**: Validates complete planning documentation
 - **Execution Modes**: Interactive (task-by-task approval), Autonomous, Custom selection  
-- **Interactive Process**: Task-by-task review, modification options, real-time validation
+- **Interactive Process**: Implementation plan analysis, task-by-task review, modification options, real-time validation
 - **Quality Gates**: Comprehensive testing, validation, and deployment readiness
 
 ## File Organization
@@ -98,14 +209,9 @@ project-root/
 │   └── <issue-name>/           # All files for one issue
 │       ├── 00-project-context.md    (optional, from doc-generator)
 │       ├── 01-concept.md             (Phase 1)
-│       ├── 02-requirements.md        (Phase 2)
-│       ├── 02-stakeholder-matrix.md
-│       ├── 02-user-stories.md
-│       ├── 03-technical-design.md    (Phase 3)
-│       ├── 03-ui-design.md          (if UI needed)
-│       ├── 03-api-specs.md
-│       ├── 04-task-breakdown.md      (Phase 4)
-│       ├── 04-implementation-plan.md
+│       ├── 02-prd.md                 (Phase 2 - Product Requirements Document)
+│       ├── 03-tdd.md                 (Phase 3 - Technical Design Document)
+│       ├── 04-tasks.md               (Phase 4 - User stories with subtasks and dependencies)
 │       ├── 05-implementation-log.md  (Phase 5)
 │       └── 05-code-changes.md
 └── [workflow command files]
@@ -117,16 +223,15 @@ project-root/
 | Command | Phase | Prerequisites | Duration | Output Files |
 |---------|-------|---------------|----------|--------------|
 | `concept.md` | 1 | None | 30-60 min | `01-concept.md` |
-| `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-*.md` files |
-| `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-*.md` files |
-| `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-*.md` files |
+| `requirements.md` | 2 | Phase 1 | 1-3 hours | `02-prd.md` |
+| `design.md` | 3 | Phases 1-2 | 2-4 hours | `03-tdd.md` |
+| `tasks.md` | 4 | Phases 1-3 | 1-2 hours | `04-tasks.md` |
 | `implement.md` | 5 | Phases 1-4 | Variable | `05-*.md` + code |
 
 ### Supporting Tools
 | Command | Purpose | Dependencies | Usage |
 |---------|---------|--------------|-------|
 | `doc-generator.md` | Create README.md | None | Independent documentation |
-| `workflow.md` | Reference guide | None | Process documentation |
 
 ## Key Features
 
@@ -142,11 +247,15 @@ project-root/
 - **Structured Tables**: Requirements matrices, API specs, task breakdowns, quality gates
 - **Visual Elements**: Progress indicators, decision trees, implementation tracking
 
-### 🤖 Interactive Process Control
-- **Deep Questioning**: Comprehensive clarification loops prevent information gaps
+### 🤖 Enhanced Interactive Process Control
+- **Logical Question Groups**: Questions organized in related groups for efficiency (3-5 questions per group)
+- **Numbered Questions with Alphabetical Answers**: Clear format (Question 1: A/B/C/D/E, always includes "Other, I'll specify")
+- **Three Answer Types**: Select one, select multiple, or enter text
 - **Context-Aware Follow-ups**: Smart follow-up questions based on previous answers
+- **Phase Progression Confirmations**: Yes/No confirmations before moving to next phase section
+- **Component-by-Component UI Design**: Individual wireframe→flow→interactions→animations for each UI component
+- **Easy-to-Answer Questions**: MCQ format preferred, minimal long-text requirements
 - **User Confirmation Gates**: Explicit approval required before generating any documentation
-- **Modification Support**: Edit and refine approaches during implementation
 
 ### 📁 Issue Organization
 - All files stored in `tasks/<issue-name>/` directories
@@ -212,7 +321,7 @@ project-root/
 - Independent of main workflow
 
 **❓ Process Questions**
-- Refer to: `workflow.md`
+- Refer to: `workflow-guide.md`
 - Complete reference guide
 - Troubleshooting and tips
 
