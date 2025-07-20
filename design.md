@@ -3,104 +3,20 @@
 ## Purpose
 Create comprehensive technical architecture and UI design specifications. Integrates wireframe-to-code UI flow when interface components are required.
 
-## Usage
-```bash
-/design
-```
-
-## Input Parameters
-- **Issue name**: `<issue-name>` (will prompt if not provided)
-
 ## Prerequisites Check
 - **REQUIRED**: `tasks/<issue-name>/01-concept.md`
 - **REQUIRED**: `tasks/<issue-name>/02-requirements.md`
-- **OPTIONAL**: All `02-*.md` files for complete requirements context
-
-## Validation Logic
-```bash
-# Validate issue name provided
-if [ -z "$issue_name" ]; then
-    echo "Enter issue name for design phase:"
-    read -p "Issue name: " issue_name
-fi
-
-# Check required prerequisite files
-required_files=(
-    "tasks/$issue_name/01-concept.md"
-    "tasks/$issue_name/02-requirements.md"
-)
-
-for file in "${required_files[@]}"; do
-    if [ ! -f "$file" ]; then
-        echo "❌ Error: Missing prerequisite file: $file"
-        echo "📋 Required phases: concept.md → requirements.md → design.md"
-        echo "🔧 Complete missing phases before design"
-        exit 1
-    fi
-done
-
-# Load all available requirement files
-req_files=($(ls tasks/$issue_name/02-*.md 2>/dev/null))
-if [ ${#req_files[@]} -eq 0 ]; then
-    echo "❌ Error: No requirements files found for issue: $issue_name"
-    exit 1
-fi
-
-echo "✅ Prerequisites validated. Loading context files..."
-echo "📄 Found ${#req_files[@]} requirements document(s)"
-```
 
 ## Process
 
 ### 1. Requirements Analysis & Context Loading
-```bash
-# Read concept document
-echo "📖 Analyzing concept document..."
-concept_content=$(cat "tasks/$issue_name/01-concept.md")
-
-# Read all requirements files
-echo "📖 Loading requirements documentation..."
-for file in "${req_files[@]}"; do
-    echo "  - $(basename $file)"
-done
-
-# Analyze requirements for UI components
-echo "🔍 Detecting UI/UX requirements..."
-ui_detected=$(grep -i "interface\|ui\|frontend\|wireframe\|design\|user experience" tasks/$issue_name/02-*.md | wc -l)
-```
+Read concept document and requirements documentation for context.
 
 ### 2. UI Requirement Detection & Interactive Flow
-```bash
-# Determine if UI components are needed
-if [ $ui_detected -gt 0 ]; then
-    echo "🎨 UI components detected in requirements"
-    echo ""
-    echo "This feature requires user interface design. Would you like to:"
-    echo "1. Interactive UI Design Flow (wireframes → design → interactions → animations)"
-    echo "2. Basic technical specifications only"
-    echo "3. Skip UI design for now"
-    
-    read -p "Select option (1-3): " ui_option
-    
-    case $ui_option in
-        1)
-            echo "🚀 Starting interactive UI design flow..."
-            run_interactive_ui_flow=true
-            ;;
-        2)
-            echo "📝 Creating basic technical specifications..."
-            run_interactive_ui_flow=false
-            ;;
-        3)
-            echo "⏭️ Skipping UI design..."
-            run_interactive_ui_flow=false
-            ;;
-    esac
-else
-    echo "ℹ️ No UI components detected - focusing on technical architecture"
-    run_interactive_ui_flow=false
-fi
-```
+Determine if UI components are needed based on requirements:
+1. Interactive UI Design Flow (wireframes → design → interactions → animations)
+2. Basic technical specifications only
+3. Skip UI design for now
 
 ### 3. Interactive Design Questioning
 
@@ -115,108 +31,78 @@ fi
 - What are the expected load patterns and scaling requirements?
 - What caching strategies are needed?
 - What are the database design and optimization requirements?
-- What monitoring and observability is required?
 
 #### Security Architecture Questions
 - What authentication and authorization patterns are needed?
 - What are the data encryption and protection requirements?
 - What security boundaries and access controls are required?
-- What audit logging and compliance tracking is needed?
 
 #### Integration & API Design
 - What external systems need integration?
 - What API contracts and data formats are required?
 - What error handling and retry strategies are needed?
-- What versioning and backward compatibility is required?
 
 ### 4. Interactive UI Design Flow (if selected)
 
 #### Phase 4a: Wireframe Creation
-```bash
-# Interactive wireframe questioning
-echo "📐 WIREFRAME PHASE"
-echo "Let's create wireframes for each screen/component:"
-
-# Screen identification
-echo "What screens/pages does this feature require?"
-# Collect screen list interactively
-
-# For each screen, create ASCII wireframe
-echo "Creating wireframe for: [Screen Name]"
-# Interactive layout questioning
-# Generate ASCII wireframe based on user input
-```
+Interactive wireframe questioning for each screen/component needed.
 
 #### Phase 4b: Visual Design Specification
-```bash
-# Design system questions
-echo "🎨 DESIGN PHASE"
-echo "Let's define the visual design system:"
-
-# Color, typography, spacing questions
-# Component styling requirements
-# Responsive design considerations
-# Accessibility requirements
-```
+Define visual design system, color palette, typography, spacing.
 
 #### Phase 4c: Interaction Design
-```bash
-# Interaction pattern questions
-echo "⚡ INTERACTION PHASE"
-echo "Let's define user interactions:"
-
-# User flow between screens
-# Interactive elements and behaviors
-# State management requirements
-# Form validation and feedback
-```
+Define user interactions, flows between screens, interactive elements.
 
 #### Phase 4d: Animation & Micro-interactions
-```bash
-# Animation requirements
-echo "✨ ANIMATION PHASE"
-echo "Let's define animations and transitions:"
+Define loading states, transitions, hover states, feedback animations.
 
-# Loading states and transitions
-# Hover and focus states
-# Success/error feedback animations
-# Performance considerations
-```
+#### Phase 4e: User Confirmation & Document Generation
+**Complete UI design review and user confirmation:**
+- Review all wireframes and visual specifications
+- Confirm interaction patterns are complete
+- Verify animation requirements are well-defined
+- Validate responsive design considerations
+- **Ask user for explicit approval before generating UI design documents**
+
+### 5. Final Confirmation & Document Generation
+Review all technical architecture and UI specifications with user:
+- Confirm system architecture is well-defined
+- Verify API specifications are complete
+- Validate security design addresses all requirements
+- Ensure database design supports all use cases
+- **Generate design documents only after explicit user approval**
 
 ## Output Files
 
-### `tasks/<issue-name>/03-technical-design.md`
-Main technical architecture document:
+### `tasks/<issue-name>/03-design.md`
+Comprehensive design specification containing:
 
 ```markdown
-# Technical Design Document: <Issue Name>
+# Technical Design Specification: <Issue Name>
 
-## Architecture Overview
-```mermaid
-graph TB
-    subgraph "Frontend Layer"
-        A[React Application]
-        B[Authentication Module] 
-        C[State Management]
-    end
-    
-    subgraph "Backend Layer"
-        D[API Gateway]
-        E[Authentication Service]
-        F[User Service]
-    end
-    
-    subgraph "External Services"
-        G[Google OAuth]
-        H[Database]
-        I[Monitoring]
-    end
-    
-    A --> D
-    B --> E
-    E --> G
-    F --> H
-    D --> I
+## System Architecture
+[High-level system design and component relationships]
+
+## Database Design
+[Schema design, relationships, and data models]
+
+## API Design
+[Endpoint specifications, request/response formats, authentication]
+
+## UI/UX Design
+[Wireframes, user flows, component specifications, responsive design]
+
+## Security Design
+[Authentication flows, authorization, data protection, security measures]
+
+## Infrastructure Design
+[Deployment architecture, scalability considerations, monitoring]
+
+## Integration Design
+[Third-party service integration, external APIs, data flow]
+
+## Task Dependencies
+[Critical path analysis and implementation order]
 ```
 
 ## Technology Stack
@@ -234,17 +120,15 @@ graph TB
 **Purpose**: Handle Google OAuth integration and session management
 **Responsibilities**:
 - OAuth flow orchestration
-- JWT token generation/validation  
+- JWT token generation and validation  
 - Session lifecycle management
 - User profile synchronization
 
-**API Endpoints**:
-```
-GET  /auth/google        - Initiate OAuth flow
-GET  /auth/callback      - Handle OAuth callback
-POST /auth/logout        - Terminate user session
-GET  /auth/profile       - Get current user profile
-```
+**Implementation Approach**:
+- Create Express.js middleware for OAuth handling
+- Implement JWT service with RS256 algorithm
+- Set up session management with Redis caching
+- Build user profile sync logic for Google accounts
 
 ### User Management Service  
 **Purpose**: Manage user profiles and preferences
@@ -253,6 +137,12 @@ GET  /auth/profile       - Get current user profile
 - Profile data validation
 - Preference management
 - Account lifecycle events
+
+**Implementation Approach**:
+- Build RESTful API endpoints for user operations
+- Implement data validation middleware
+- Create profile update synchronization
+- Set up account event logging
 
 ## Data Architecture
 
@@ -315,41 +205,24 @@ sequenceDiagram
 ## API Specifications
 
 ### Authentication Endpoints
-```yaml
-/auth/google:
-  method: GET
-  description: Initiate Google OAuth flow
-  parameters:
-    - name: redirect_uri
-      type: string
-      required: false
-  responses:
-    302: Redirect to Google OAuth
-    400: Invalid redirect URI
+- GET /auth/google - Initiate Google OAuth flow
+- GET /auth/callback - Handle OAuth callback with authorization code
+- POST /auth/logout - Terminate user session
+- GET /auth/profile - Get current user profile
 
-/auth/callback:
-  method: GET  
-  description: Handle OAuth callback
-  parameters:
-    - name: code
-      type: string
-      required: true
-    - name: state
-      type: string
-      required: true
-  responses:
-    200: Authentication successful
-    400: Invalid authorization code
-    401: Authentication failed
-```
+**Implementation Approach**:
+- Use Passport.js Google OAuth 2.0 strategy
+- Implement PKCE flow for enhanced security
+- Set up proper error handling and validation
+- Add rate limiting and security headers
 
 ## Security Design
 
 ### Authentication Flow Security
-- **PKCE Implementation**: Code challenge/verifier for OAuth
+- **PKCE Implementation**: Code challenge/verifier for OAuth security
 - **State Parameter**: CSRF protection during OAuth flow
-- **JWT Security**: Short-lived access tokens (15min) + refresh tokens
-- **Session Security**: Secure, httpOnly cookies with SameSite=Strict
+- **JWT Security**: Short-lived access tokens with refresh token rotation
+- **Session Security**: Secure httpOnly cookies with SameSite=Strict
 
 ### Data Protection
 - **Encryption at Rest**: Database field-level encryption for PII
@@ -411,32 +284,23 @@ graph TB
 | Invalid Token | 401 | "Please log in again" | Clear session, redirect |
 | Service Unavailable | 503 | "Service temporarily unavailable" | Show retry with backoff |
 | Rate Limited | 429 | "Too many attempts, please wait" | Implement exponential backoff |
-
-## Migration & Rollback Plan
-1. **Database Migration**: Add new tables with backwards compatibility
-2. **Feature Flags**: Gradual rollout with ability to disable
-3. **Rollback Strategy**: Automated rollback on error threshold
-4. **Data Migration**: Existing users mapped to new authentication system
 ```
 
 ### `tasks/<issue-name>/03-ui-design.md` (if UI components required)
-Comprehensive UI/UX design specification:
 
 ```markdown
 # UI Design Document: <Issue Name>
 
 ## Design System Overview
 ### Color Palette
-```
-Primary:   #1a73e8 (Google Blue)
-Secondary: #34a853 (Google Green)  
-Error:     #ea4335 (Google Red)
-Warning:   #fbbc04 (Google Yellow)
-Background: #ffffff
-Surface:    #f8f9fa
-Text Primary: #202124
-Text Secondary: #5f6368
-```
+- Primary: #1a73e8 (Google Blue)
+- Secondary: #34a853 (Google Green)  
+- Error: #ea4335 (Google Red)
+- Warning: #fbbc04 (Google Yellow)
+- Background: #ffffff
+- Surface: #f8f9fa
+- Text Primary: #202124
+- Text Secondary: #5f6368
 
 ### Typography
 - **Heading**: Roboto, 24px, 500 weight
@@ -516,113 +380,17 @@ Text Secondary: #5f6368
 - **Focus Indicators**: Clear visual focus states
 
 ## Animation Specifications
-### Button Hover Animation
-```css
-transition: background-color 0.2s ease-in-out;
-```
-
-### Loading Spinner
-```css
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-```
+### Button Interactions
+- Hover transition: background-color change over 0.2s ease-in-out
+- Focus transition: outline appearance over 0.15s ease
+- Loading spinner: continuous rotation animation
 
 ### Success/Error Messages
-```css
-/* Slide in from top */
-@keyframes slideIn {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-```
-```
-
-### `tasks/<issue-name>/03-api-specs.md`
-Detailed API specifications and contracts.
-
-### `tasks/<issue-name>/03-data-models.md`
-Database schemas and data validation rules.
-
-### `tasks/<issue-name>/03-security-design.md`
-Security architecture and compliance requirements.
-
-## Rich Documentation Features
-
-### Mermaid Diagrams
-- **System Architecture**: Component relationships and data flow
-- **Database Schemas**: Entity relationship diagrams  
-- **Sequence Diagrams**: API interaction flows
-- **Deployment Diagrams**: Infrastructure and service topology
-
-### ASCII Wireframes
-- **Screen Layouts**: Visual interface structure
-- **Component Hierarchy**: UI element organization
-- **User Flow Diagrams**: Navigation and interaction paths
-
-### Technical Specifications
-- **API Documentation**: Endpoint specifications with examples
-- **Database Schemas**: Table structures with constraints
-- **Security Patterns**: Authentication and authorization flows
-
-## Error Handling
-```bash
-# Missing requirements files
-if [ ${#req_files[@]} -eq 0 ]; then
-    echo "❌ Error: No requirements files found for issue: $issue_name"
-    echo "📋 Required files pattern: tasks/$issue_name/02-*.md"
-    echo "🔧 Run requirements.md first"
-    exit 1
-fi
-
-# Concept or requirements missing
-for file in "${required_files[@]}"; do
-    if [ ! -f "$file" ]; then
-        echo "❌ Error: Missing prerequisite: $(basename $file)"
-        echo "📋 Workflow order: concept.md → requirements.md → design.md"
-        exit 1
-    fi
-done
+- Entry animation: slide in from top over 0.3s ease-out
+- Exit animation: fade out over 0.2s ease-in
+- Auto-dismiss after 5 seconds with fade animation
 ```
 
 ## Integration Points
-- **Previous Phases**: Reads concept + all requirements documentation
+- **Previous Phases**: Reads concept and requirements documentation
 - **Next Phase**: `tasks.md` will read all `03-*.md` design files
-- **UI Integration**: Seamlessly integrates wireframe-to-code flow when needed
-- **Quality Check**: Can be validated with design review tools
-
-## Tips for Success
-1. **Architecture First**: Start with high-level system design
-2. **UI When Needed**: Use interactive UI flow for interface-heavy features
-3. **Document Decisions**: Record architectural choices and rationale
-4. **Think Security**: Consider security implications in every design decision
-5. **Plan for Scale**: Design for expected growth and load patterns
-6. **API-First**: Design clear, versioned API contracts
-
-## Example Workflow
-```bash
-# Start design phase
-./design.md
-
-# System validates prerequisites and detects UI requirements
-✅ Prerequisites validated. Loading context files...
-🎨 UI components detected in requirements
-
-# User chooses interactive UI design flow
-🚀 Starting interactive UI design flow...
-📐 WIREFRAME PHASE: Creating wireframes...
-🎨 DESIGN PHASE: Defining visual system...
-⚡ INTERACTION PHASE: Specifying user interactions...
-✨ ANIMATION PHASE: Adding micro-interactions...
-
-# System generates comprehensive design documentation
-✅ Design documentation complete:
-  - tasks/google-oauth-integration/03-technical-design.md
-  - tasks/google-oauth-integration/03-ui-design.md
-  - tasks/google-oauth-integration/03-api-specs.md
-  - tasks/google-oauth-integration/03-data-models.md
-  - tasks/google-oauth-integration/03-security-design.md
-
-Next: Run tasks.md with issue name 'google-oauth-integration'
-```

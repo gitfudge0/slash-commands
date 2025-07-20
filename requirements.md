@@ -1,77 +1,17 @@
 # Requirements - Phase 2: Requirements Documentation & Specification
 
 ## Purpose
-Transform concept into detailed, structured requirements following industry best practices with comprehensive user stories, acceptance criteria, and functional specifications.
-
-## Usage
-```bash
-/requirements
-```
-
-## Input Parameters
-- **Issue name**: `<issue-name>` (will prompt if not provided)
+Transform concept into detailed, structured requirements with comprehensive user stories, acceptance criteria, and functional specifications.
 
 ## Prerequisites Check
 - **REQUIRED**: `tasks/<issue-name>/01-concept.md`
-- **OPTIONAL**: `tasks/<issue-name>/00-project-context.md` (from doc-generator)
-
-## Validation Logic
-```bash
-# Validate issue name provided
-if [ -z "$issue_name" ]; then
-    echo "Enter issue name for requirements phase:"
-    read -p "Issue name: " issue_name
-fi
-
-# Check required prerequisite files
-required_file="tasks/$issue_name/01-concept.md"
-if [ ! -f "$required_file" ]; then
-    echo "❌ Error: Concept phase incomplete for issue: $issue_name"
-    echo "📝 Required file missing: $required_file"
-    echo "💡 Run: concept.md with issue name '$issue_name'"
-    exit 1
-fi
-
-# Check optional context file
-context_file="tasks/$issue_name/00-project-context.md"
-if [ -f "$context_file" ]; then
-    echo "📄 Found project context: $context_file"
-    has_context=true
-else
-    echo "ℹ️ No project context found (optional)"
-    echo "💡 Consider running: doc-generator.md for better context"
-    has_context=false
-fi
-
-echo "✅ Prerequisites validated. Reading concept document..."
-```
 
 ## Process
 
-### 1. Concept Analysis & Context Loading
-```bash
-# Read and analyze concept document
-echo "📖 Analyzing concept document..."
-concept_content=$(cat "tasks/$issue_name/01-concept.md")
-
-# Read project context if available
-if [ "$has_context" = true ]; then
-    echo "📖 Loading project context..."
-    context_content=$(cat "tasks/$issue_name/00-project-context.md")
-fi
-
-# Extract key information for requirements gathering
-echo "🔍 Extracting key information from concept..."
-```
+### 1. Concept Analysis
+Load and analyze concept document for context.
 
 ### 2. Interactive Requirements Gathering
-
-#### Stakeholder Deep Dive
-- Who are the primary users of this solution?
-- Who are the secondary stakeholders affected?
-- What are the user roles and permissions needed?
-- Are there any external system integrations required?
-- What are the administrative/management requirements?
 
 #### Functional Requirements Clarification
 - What are the core features/capabilities needed?
@@ -92,7 +32,6 @@ echo "🔍 Extracting key information from concept..."
 - What are the different user paths/scenarios?
 - What are the edge cases or exception scenarios?
 - What integrations or external dependencies exist?
-- What are the success and failure conditions?
 
 #### Acceptance Criteria Definition
 - How will we know this requirement is complete?
@@ -106,44 +45,41 @@ echo "🔍 Extracting key information from concept..."
 - What calculations or algorithms are needed?
 - What are the data transformation requirements?
 - What are the notification/communication requirements?
-- What reporting or analytics are needed?
 
-### 3. Requirements Documentation Generation
+### 3. User Confirmation & Document Generation
+
+Review all gathered requirements with user before generating documentation:
+- Confirm functional requirements are complete
+- Verify non-functional requirements address all concerns
+- Validate user stories cover all scenarios
+- Ensure acceptance criteria are testable
+- Generate requirements documents only after explicit user approval
 
 ## Output Files
 
 ### `tasks/<issue-name>/02-requirements.md`
-Main requirements document with comprehensive specification:
+Comprehensive requirements document containing:
 
 ```markdown
-# Requirements Document: <Issue Name>
+# Requirements Specification: <Issue Name>
 
-## Executive Summary
-[Brief overview of the requirements and scope]
+## Functional Requirements
+[Detailed functional specifications]
 
-## Stakeholder Analysis
-| Stakeholder | Role | Impact | Influence | Requirements |
-|-------------|------|---------|-----------|--------------|
-| End Users | Primary | High | Medium | [user needs] |
-| Administrators | Secondary | Medium | High | [admin needs] |
-| Developers | Implementation | High | Medium | [technical needs] |
-| Business | Decision | High | High | [business needs] |
+## User Stories
+[Complete user story breakdown with acceptance criteria]
 
-## User Journey Map
-```mermaid
-journey
-    title User Authentication Journey
-    section Discovery
-      Navigate to app: 5: User
-      See login options: 4: User
-    section Authentication  
-      Click Google login: 4: User
-      OAuth redirect: 3: User, Google
-      Grant permissions: 3: User
-    section Access
-      Redirect to app: 5: User
-      Create profile: 4: User
-      Access dashboard: 5: User
+## Non-Functional Requirements  
+[Performance, security, scalability requirements]
+
+## Technical Constraints
+[Technology limitations and dependencies]
+
+## API Requirements
+[External service integration requirements]
+
+## Acceptance Criteria
+[Measurable completion criteria for each requirement]
 ```
 
 ## Functional Requirements
@@ -262,12 +198,6 @@ erDiagram
 - **Terms**: User acceptance of service terms
 - **Accessibility**: WCAG 2.1 AA compliance
 
-## Success Metrics
-- **User Adoption**: 80% of new users choose Google login
-- **Conversion Rate**: 95% successful authentication completion
-- **User Satisfaction**: <2 second authentication flow
-- **Error Rate**: <1% authentication failures
-
 ## Dependencies & Assumptions
 ### Dependencies
 - Google OAuth API availability
@@ -282,89 +212,6 @@ erDiagram
 - Google OAuth policies remain stable
 ```
 
-### `tasks/<issue-name>/02-stakeholder-matrix.md`
-Detailed stakeholder analysis and communication plan.
-
-### `tasks/<issue-name>/02-user-stories.md`
-Complete user story collection with acceptance criteria.
-
-### `tasks/<issue-name>/02-acceptance-criteria.md`
-Comprehensive acceptance criteria with test scenarios.
-
-### `tasks/<issue-name>/02-data-requirements.md`
-Detailed data model and validation requirements.
-
-## Rich Documentation Features
-
-### Mermaid Diagrams
-- **User Journey Maps**: Step-by-step user experience flows
-- **Entity Relationship Diagrams**: Data model visualization
-- **Process Flow Diagrams**: Business logic workflows
-- **Integration Architecture**: System interaction patterns
-
-### ASCII Wireframes
-- **UI Layout Sketches**: Basic interface structure
-- **User Flow Diagrams**: Navigation and interaction patterns
-- **Data Flow Visualization**: Information movement through system
-
-### Structured Tables
-- **Requirements Traceability Matrix**: Link requirements to business needs
-- **Stakeholder Impact Analysis**: Influence and interest mapping
-- **Integration Specifications**: External system requirements
-- **Error Condition Mapping**: Comprehensive error handling
-
-## Error Handling
-```bash
-# Missing concept document
-if [ ! -f "tasks/$issue_name/01-concept.md" ]; then
-    echo "❌ Error: Concept phase incomplete for issue: $issue_name"
-    echo "📋 Missing: tasks/$issue_name/01-concept.md"
-    echo "🔧 Solution: Run concept.md with issue name '$issue_name'"
-    echo ""
-    echo "Workflow order: concept.md → requirements.md → design.md → tasks.md → implement.md"
-    exit 1
-fi
-
-# Invalid issue name or directory issues
-if [ ! -d "tasks/$issue_name" ]; then
-    echo "❌ Error: Issue directory not found: tasks/$issue_name"
-    echo "💡 Tip: Issue names should match those created in concept phase"
-    exit 1
-fi
-```
-
 ## Integration Points
 - **Previous Phase**: Reads `tasks/<issue-name>/01-concept.md` for context
-- **Next Phase**: `design.md` will read all `02-*.md` requirement files
-- **Optional Context**: Uses `00-project-context.md` if available
-- **Quality Check**: Can be validated with quality assessment tools
-
-## Tips for Success
-1. **Be Comprehensive**: Cover all functional and non-functional aspects
-2. **Think User-Centered**: Focus on user needs and workflows
-3. **Define Measurable Criteria**: Ensure testable acceptance conditions
-4. **Consider Edge Cases**: Plan for error conditions and exceptions
-5. **Document Assumptions**: Make implicit requirements explicit
-6. **Visual Communication**: Use diagrams and wireframes for clarity
-
-## Example Workflow
-```bash
-# Start requirements phase
-./requirements.md
-
-# System validates prerequisites
-✅ Prerequisites validated. Reading concept document...
-
-# System loads context and begins interactive questioning
-📖 Analyzing concept document for 'google-oauth-integration'
-🔍 Starting comprehensive requirements gathering...
-
-# After thorough interactive session
-✅ Requirements documentation complete:
-  - tasks/google-oauth-integration/02-requirements.md
-  - tasks/google-oauth-integration/02-stakeholder-matrix.md  
-  - tasks/google-oauth-integration/02-user-stories.md
-  - tasks/google-oauth-integration/02-acceptance-criteria.md
-
-Next: Run design.md with issue name 'google-oauth-integration'
-```
+- **Next Phase**: `design.md` will read `02-requirements.md`
