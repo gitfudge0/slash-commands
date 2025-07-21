@@ -20,6 +20,9 @@ Determine if UI components are needed based on requirements:
 
 ### 3. Interactive Design Questioning
 
+**Question Format Instructions for LLM:**
+Present each question as a numbered item with contextual multiple-choice answers (A-F) generated from the requirements document and user's responses. Always include "F: Other - please specify" as the final option. Users respond with codes like "1-B", "2-A,C", etc.
+
 #### Technical Architecture Questions
 - What is the overall system architecture approach? (monolith, microservices, serverless)
 - Which technology stack components are required?
@@ -58,6 +61,10 @@ Define loading states, transitions, hover states, feedback animations.
 
 #### Phase 4e: User Confirmation & Document Generation
 **Complete UI design review and user confirmation:**
+
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
+
 - Review all wireframes and visual specifications
 - Confirm interaction patterns are complete
 - Verify animation requirements are well-defined
@@ -65,6 +72,10 @@ Define loading states, transitions, hover states, feedback animations.
 - **Ask user for explicit approval before generating UI design documents**
 
 ### 5. Final Confirmation & Document Generation
+
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
+
 Review all technical architecture and UI specifications with user:
 - Confirm system architecture is well-defined
 - Verify API specifications are complete

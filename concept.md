@@ -17,6 +17,9 @@ Determine source: user idea, GitHub issue, bug report, or enhancement request.
 
 ### 3. Interactive Concept Clarification
 
+**Question Format Instructions for LLM:**
+Present each question as a numbered item with contextual multiple-choice answers (A-F) generated from the user's provided context. Always include "F: Other - please specify" as the final option. Users respond with codes like "1-B", "2-A,C", etc.
+
 #### Problem Definition Questions
 - What specific problem are we trying to solve?
 - Who experiences this problem and how frequently?
@@ -35,6 +38,9 @@ Determine source: user idea, GitHub issue, bug report, or enhancement request.
 - What are the specific behaviors or outcomes expected?
 
 ### 4. User Confirmation & Document Generation
+
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
 
 Ask user to confirm all gathered information before generating concept document:
 - Review problem statement and solution approach

@@ -142,6 +142,9 @@ done
 
 ### 3. User Confirmation & Implementation Start
 
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
+
 Review all implementation planning information with user before beginning:
 - Confirm execution mode is appropriate for the situation
 - Verify task breakdown covers all requirements

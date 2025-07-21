@@ -13,6 +13,9 @@ Load and analyze concept document for context.
 
 ### 2. Interactive Requirements Gathering
 
+**Question Format Instructions for LLM:**
+Present each question as a numbered item with contextual multiple-choice answers (A-F) generated from the concept document and user's responses. Always include "F: Other - please specify" as the final option. Users respond with codes like "1-B", "2-A,C", etc.
+
 #### Functional Requirements Clarification
 - What are the core features/capabilities needed?
 - What is the expected user workflow/journey?
@@ -47,6 +50,9 @@ Load and analyze concept document for context.
 - What are the notification/communication requirements?
 
 ### 3. User Confirmation & Document Generation
+
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
 
 Review all gathered requirements with user before generating documentation:
 - Confirm functional requirements are complete

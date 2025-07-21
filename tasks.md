@@ -14,6 +14,9 @@ Read and analyze all previous phase documents for context.
 
 ### 2. Interactive Task Planning Session
 
+**Question Format Instructions for LLM:**
+Present each question as a numbered item with contextual multiple-choice answers (A-F) generated from the design document and user's responses. Always include "F: Other - please specify" as the final option. Users respond with codes like "1-B", "2-A,C", etc.
+
 #### Implementation Approach Questions
 - What is your preferred development approach? (incremental, feature-complete, MVP-first)
 - Should tasks be organized by: component, feature, or layer?
@@ -39,6 +42,9 @@ Read and analyze all previous phase documents for context.
 - What tasks have external dependencies that could delay progress?
 
 ### 3. User Confirmation & Task Generation
+
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
 
 Review all task planning information with user before generating breakdown:
 - Confirm implementation approach is appropriate
