@@ -21,26 +21,124 @@ Determine if UI components are needed based on requirements:
 ### 3. Interactive Design Questioning
 
 #### Technical Architecture Questions
-- What is the overall system architecture approach? (monolith, microservices, serverless)
-- Which technology stack components are required?
-- What are the integration points with existing systems?
-- What are the data flow patterns and storage requirements?
-- What are the API design requirements and specifications?
+
+1. What is the overall system architecture approach?
+   A: Monolithic application architecture
+   B: Microservices architecture
+   C: Serverless/Function-as-a-Service
+   D: Event-driven architecture
+   E: Hybrid approach combining multiple patterns
+   F: Other - please specify
+
+2. Which technology stack components are required?
+   A: Frontend: React/Vue.js, Backend: Node.js
+   B: Frontend: Angular, Backend: .NET Core
+   C: Frontend: Vue.js, Backend: Python/Django
+   D: Full-stack framework (Next.js, Laravel)
+   E: Mobile-first or native applications
+   F: Other - please specify
+
+3. What are the integration points with existing systems?
+   A: REST APIs for data exchange
+   B: Database-level integration
+   C: Message queue/event-driven integration
+   D: File-based data exchange
+   E: Real-time webhooks or notifications
+   F: Other - please specify
+
+4. What are the data flow patterns and storage requirements?
+   A: Simple CRUD operations with relational DB
+   B: Complex data relationships with multiple DBs
+   C: Real-time data streaming and processing
+   D: Document/NoSQL storage requirements
+   E: Data warehousing and analytics needs
+   F: Other - please specify
+
+5. What are the API design requirements and specifications?
+   A: RESTful APIs with standard HTTP methods
+   B: GraphQL API for flexible data queries
+   C: RPC-style APIs for service communication
+   D: Webhook APIs for event notifications
+   E: Real-time APIs (WebSocket, Server-Sent Events)
+   F: Other - please specify
 
 #### Performance & Scalability Design
-- What are the expected load patterns and scaling requirements?
-- What caching strategies are needed?
-- What are the database design and optimization requirements?
+
+1. What are the expected load patterns and scaling requirements?
+   A: Low load, minimal scaling needed
+   B: Predictable load with scheduled scaling
+   C: Variable load requiring auto-scaling
+   D: High load requiring distributed architecture
+   E: Global scale with multi-region deployment
+   F: Other - please specify
+
+2. What caching strategies are needed?
+   A: In-memory caching for frequently accessed data
+   B: Database query result caching
+   C: CDN for static assets and content
+   D: Application-level caching for computed results
+   E: Distributed caching across multiple nodes
+   F: Other - please specify
+
+3. What are the database design and optimization requirements?
+   A: Single database with proper indexing
+   B: Read replicas for query performance
+   C: Database sharding for horizontal scaling
+   D: Data archiving and cleanup strategies
+   E: Multi-database architecture for different data types
+   F: Other - please specify
 
 #### Security Architecture Questions
-- What authentication and authorization patterns are needed?
-- What are the data encryption and protection requirements?
-- What security boundaries and access controls are required?
+
+1. What authentication and authorization patterns are needed?
+   A: Username/password with session management
+   B: JWT token-based authentication
+   C: OAuth 2.0 with third-party providers
+   D: Multi-factor authentication (MFA)
+   E: Enterprise SSO integration
+   F: Other - please specify
+
+2. What are the data encryption and protection requirements?
+   A: HTTPS/TLS for data in transit
+   B: Database encryption for data at rest
+   C: Field-level encryption for sensitive data
+   D: End-to-end encryption for communications
+   E: Key management and rotation
+   F: Other - please specify
+
+3. What security boundaries and access controls are required?
+   A: Role-based access control (RBAC)
+   B: Attribute-based access control (ABAC)
+   C: Network-level security (VPN, firewall)
+   D: API rate limiting and throttling
+   E: Data loss prevention (DLP) measures
+   F: Other - please specify
 
 #### Integration & API Design
-- What external systems need integration?
-- What API contracts and data formats are required?
-- What error handling and retry strategies are needed?
+
+1. What external systems need integration?
+   A: Payment gateways and financial systems
+   B: Authentication providers (Google, Microsoft)
+   C: Communication services (email, SMS)
+   D: Analytics and monitoring platforms
+   E: Business intelligence and reporting tools
+   F: Other - please specify
+
+2. What API contracts and data formats are required?
+   A: JSON REST APIs with OpenAPI/Swagger documentation
+   B: XML-based APIs for legacy system integration
+   C: GraphQL for flexible client-server communication
+   D: Protocol Buffers for high-performance APIs
+   E: Event-driven messaging with JSON/Avro
+   F: Other - please specify
+
+3. What error handling and retry strategies are needed?
+   A: Simple error responses with HTTP status codes
+   B: Detailed error objects with error codes and messages
+   C: Circuit breaker pattern for external service calls
+   D: Exponential backoff retry mechanism
+   E: Dead letter queues for failed message processing
+   F: Other - please specify
 
 ### 4. Interactive UI Design Flow (if selected)
 
@@ -58,19 +156,69 @@ Define loading states, transitions, hover states, feedback animations.
 
 #### Phase 4e: User Confirmation & Document Generation
 **Complete UI design review and user confirmation:**
-- Review all wireframes and visual specifications
-- Confirm interaction patterns are complete
-- Verify animation requirements are well-defined
-- Validate responsive design considerations
-- **Ask user for explicit approval before generating UI design documents**
+
+**UI Design Confirmation Questions:**
+
+1. Are all wireframes and visual specifications complete and accurate?
+   A: Yes, all wireframes meet requirements
+   B: Need to revise existing wireframes
+   C: Missing wireframes for some screens
+   D: Need more detailed visual specifications
+   E: Other - please specify
+
+2. Are the interaction patterns complete and intuitive?
+   A: Yes, all interactions are well-defined
+   B: Need to add more interaction details
+   C: Some interactions need revision
+   D: Missing interaction patterns
+   E: Other - please specify
+
+3. Are animation requirements well-defined?
+   A: Yes, all animations and micro-interactions specified
+   B: Need more animation details
+   C: Some animations need revision
+   D: Missing animation requirements
+   E: Other - please specify
+
+4. Are responsive design considerations adequate?
+   A: Yes, responsive behavior is fully specified
+   B: Need more mobile-specific design
+   C: Need tablet-specific considerations
+   D: Need desktop optimization details
+   E: Other - please specify
 
 ### 5. Final Confirmation & Document Generation
 Review all technical architecture and UI specifications with user:
-- Confirm system architecture is well-defined
-- Verify API specifications are complete
-- Validate security design addresses all requirements
-- Ensure database design supports all use cases
-- **Generate design documents only after explicit user approval**
+
+**Final Design Confirmation Questions:**
+
+1. Is the system architecture well-defined and appropriate?
+   A: Yes, architecture meets all requirements
+   B: Need architecture revisions
+   C: Missing architectural components
+   D: Need more detailed architecture documentation
+   E: Other - please specify
+
+2. Are API specifications complete and well-documented?
+   A: Yes, all APIs are fully specified
+   B: Need more API documentation
+   C: Missing some API endpoints
+   D: Need API contract revisions
+   E: Other - please specify
+
+3. Does the security design address all requirements?
+   A: Yes, all security concerns are addressed
+   B: Need additional security measures
+   C: Need security design revisions
+   D: Missing security documentation
+   E: Other - please specify
+
+4. Does the database design support all use cases?
+   A: Yes, database design is complete and optimal
+   B: Need database schema revisions
+   C: Missing database optimization
+   D: Need additional database documentation
+   E: Other - please specify
 
 ## Output Files
 
