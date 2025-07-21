@@ -142,37 +142,15 @@ done
 
 ### 3. User Confirmation & Implementation Start
 
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
+
 Review all implementation planning information with user before beginning:
-
-**Implementation Start Confirmation Questions:**
-
-1. Is the execution mode appropriate for your situation?
-   A: Yes, interactive mode provides the right level of control
-   B: Yes, autonomous mode suits our needs
-   C: Yes, custom task selection is what we need
-   D: Need to change execution mode
-   E: Other - please specify
-
-2. Does the task breakdown cover all requirements completely?
-   A: Yes, all requirements are addressed in tasks
-   B: Missing some functional requirements
-   C: Missing non-functional requirements
-   D: Task breakdown needs refinement
-   E: Other - please specify
-
-3. Are the quality gates and validation approach adequate?
-   A: Yes, quality gates are comprehensive
-   B: Need additional testing validation
-   C: Need more security validation
-   D: Need different validation approach
-   E: Other - please specify
-
-4. Does the implementation approach meet your expectations?
-   A: Yes, ready to proceed with implementation
-   B: Need to adjust implementation approach
-   C: Need to revise task priorities
-   D: Need to change development methodology
-   E: Other - please specify
+- Confirm execution mode is appropriate for the situation
+- Verify task breakdown covers all requirements
+- Validate quality gates and validation approach
+- Ensure implementation approach meets expectations
+- **Begin implementation only after explicit user approval**
 
 ### 4. Interactive Implementation Flow
 

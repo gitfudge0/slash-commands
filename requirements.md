@@ -13,233 +13,53 @@ Load and analyze concept document for context.
 
 ### 2. Interactive Requirements Gathering
 
+**Question Format Instructions for LLM:**
+Present each question as a numbered item with contextual multiple-choice answers (A-F) generated from the concept document and user's responses. Always include "F: Other - please specify" as the final option. Users respond with codes like "1-B", "2-A,C", etc.
+
 #### Functional Requirements Clarification
-
-1. What are the core features/capabilities needed?
-   A: User authentication and authorization
-   B: Data creation, read, update, delete operations
-   C: Search and filtering capabilities
-   D: Reporting and analytics features
-   E: Integration with external systems
-   F: Other - please specify
-
-2. What is the expected user workflow/journey?
-   A: Linear step-by-step process
-   B: Non-linear with multiple entry points
-   C: Role-based workflows for different users
-   D: Self-service user-driven workflow
-   E: Admin-managed workflow with approvals
-   F: Other - please specify
-
-3. What data needs to be captured, stored, or processed?
-   A: User profile and authentication data
-   B: Business transaction data
-   C: Configuration and settings data
-   D: Analytics and logging data
-   E: File uploads and attachments
-   F: Other - please specify
-
-4. What business rules and logic need to be implemented?
-   A: Validation rules for data entry
-   B: Authorization rules for access control
-   C: Workflow approval and notification rules
-   D: Calculation and processing logic
-   E: Integration and synchronization rules
-   F: Other - please specify
-
-5. What validation and error handling is required?
-   A: Input validation for all user data
-   B: Business rule validation
-   C: System error handling and recovery
-   D: User-friendly error messages
-   E: Audit logging for errors
-   F: Other - please specify
+- What are the core features/capabilities needed?
+- What is the expected user workflow/journey?
+- What data needs to be captured, stored, or processed?
+- What business rules and logic need to be implemented?
+- What validation and error handling is required?
 
 #### Non-Functional Requirements
-
-1. What are the performance expectations? (response time, throughput)
-   A: Response time <200ms, high throughput
-   B: Response time <1s, moderate throughput
-   C: Response time <3s, low throughput
-   D: Real-time performance required
-   E: Performance not critical
-   F: Other - please specify
-
-2. What are the availability requirements? (uptime, maintenance windows)
-   A: 99.9% uptime (enterprise level)
-   B: 99.5% uptime (business level)
-   C: 99% uptime (standard level)
-   D: 24/7 availability required
-   E: Business hours only
-   F: Other - please specify
-
-3. What are the scalability requirements? (concurrent users, data volume)
-   A: <100 concurrent users, small data
-   B: 100-1000 users, medium data
-   C: 1000-10000 users, large data
-   D: >10000 users, very large data
-   E: Auto-scaling capabilities required
-   F: Other - please specify
-
-4. What are the security requirements? (authentication, authorization, encryption)
-   A: Basic authentication and HTTPS
-   B: Role-based access control
-   C: Multi-factor authentication
-   D: Advanced security with compliance
-   E: Enterprise-grade security
-   F: Other - please specify
-
-5. What are the compliance requirements? (GDPR, HIPAA, SOC2, etc.)
-   A: GDPR compliance for EU users
-   B: HIPAA for healthcare data
-   C: SOC2 for business customers
-   D: Industry-specific compliance
-   E: No specific compliance needed
-   F: Other - please specify
+- What are the performance expectations? (response time, throughput)
+- What are the availability requirements? (uptime, maintenance windows)
+- What are the scalability requirements? (concurrent users, data volume)
+- What are the security requirements? (authentication, authorization, encryption)
+- What are the compliance requirements? (GDPR, HIPAA, SOC2, etc.)
 
 #### User Story Creation
-
-1. Can you describe the user workflow step by step?
-   A: Simple single-step process
-   B: Multi-step linear workflow
-   C: Complex workflow with branches/conditions
-   D: Parallel processes that can run simultaneously
-   E: Workflow varies by user role/permissions
-   F: Other - please specify
-
-2. What are the different user paths/scenarios?
-   A: Single happy path scenario
-   B: Happy path plus error scenarios
-   C: Multiple user roles with different paths
-   D: Guest vs authenticated user paths
-   E: Admin vs regular user scenarios
-   F: Other - please specify
-
-3. What are the edge cases or exception scenarios?
-   A: Invalid input handling
-   B: System unavailable/timeout scenarios
-   C: Insufficient permissions/access denied
-   D: Data not found/empty state scenarios
-   E: Concurrent user conflicts
-   F: Other - please specify
-
-4. What integrations or external dependencies exist?
-   A: Third-party APIs for core functionality
-   B: External databases or data sources
-   C: Authentication providers (OAuth, LDAP)
-   D: Payment processors or financial systems
-   E: Email/SMS notification services
-   F: Other - please specify
+- Can you describe the user workflow step by step?
+- What are the different user paths/scenarios?
+- What are the edge cases or exception scenarios?
+- What integrations or external dependencies exist?
 
 #### Acceptance Criteria Definition
-
-1. How will we know this requirement is complete?
-   A: All unit and integration tests pass
-   B: User acceptance testing completed successfully
-   C: Performance benchmarks achieved
-   D: Security review and approval obtained
-   E: Feature deployed and stable in production
-   F: Other - please specify
-
-2. What are the testable conditions?
-   A: Input validation works correctly
-   B: Expected outputs are generated
-   C: Error scenarios handled appropriately
-   D: Performance meets defined metrics
-   E: Security controls function as designed
-   F: Other - please specify
-
-3. What are the data validation rules?
-   A: Required field validation
-   B: Format validation (email, phone, etc.)
-   C: Business rule validation
-   D: Range and boundary validation
-   E: Cross-field dependency validation
-   F: Other - please specify
-
-4. What are the UI/UX requirements?
-   A: Responsive design for all devices
-   B: Accessibility compliance (WCAG)
-   C: Consistent with existing design system
-   D: Intuitive navigation and flow
-   E: Loading states and error messaging
-   F: Other - please specify
-
-5. What are the error conditions and messages?
-   A: Field-level validation errors
-   B: System-level error handling
-   C: User-friendly error messages
-   D: Technical error logging for debugging
-   E: Graceful degradation when services unavailable
-   F: Other - please specify
+- How will we know this requirement is complete?
+- What are the testable conditions?
+- What are the data validation rules?
+- What are the UI/UX requirements?
+- What are the error conditions and messages?
 
 #### Business Logic Clarification
-
-1. What are the business rules that must be enforced?
-   A: Data access and permission rules
-   B: Workflow approval and routing rules
-   C: Calculation and pricing rules
-   D: Data integrity and consistency rules
-   E: Compliance and regulatory rules
-   F: Other - please specify
-
-2. What calculations or algorithms are needed?
-   A: Mathematical calculations (sum, average, etc.)
-   B: Financial calculations (tax, interest, etc.)
-   C: Scoring or ranking algorithms
-   D: Data transformation and processing
-   E: Machine learning or analytics algorithms
-   F: Other - please specify
-
-3. What are the data transformation requirements?
-   A: Format conversion (JSON, XML, CSV)
-   B: Data mapping between systems
-   C: Data cleansing and validation
-   D: Data aggregation and summarization
-   E: Real-time data processing
-   F: Other - please specify
-
-4. What are the notification/communication requirements?
-   A: Email notifications for key events
-   B: SMS notifications for urgent items
-   C: In-app notifications and alerts
-   D: System-to-system notifications
-   E: Reports and scheduled communications
-   F: Other - please specify
+- What are the business rules that must be enforced?
+- What calculations or algorithms are needed?
+- What are the data transformation requirements?
+- What are the notification/communication requirements?
 
 ### 3. User Confirmation & Document Generation
 
+**Confirmation Format Instructions for LLM:**
+Present confirmation questions in the same numbered format with contextual Yes/No/Other options.
+
 Review all gathered requirements with user before generating documentation:
-
-**Requirements Confirmation Questions:**
-
-1. Are the functional requirements complete and well-defined?
-   A: Yes, all functional requirements are captured
-   B: Missing core functionality
-   C: Need more detail on existing requirements
-   D: Need additional functional requirements
-   E: Other - please specify
-
-2. Do the non-functional requirements address all concerns?
-   A: Yes, all performance, security, and scalability needs covered
-   B: Missing performance requirements
-   C: Missing security requirements
-   D: Missing scalability/availability requirements
-   E: Other - please specify
-
-3. Do the user stories cover all scenarios and workflows?
-   A: Yes, all user paths and scenarios are covered
-   B: Missing user scenarios
-   C: Need more detailed user stories
-   D: Missing edge cases and error scenarios
-   E: Other - please specify
-
-4. Are all acceptance criteria testable and measurable?
-   A: Yes, all criteria can be verified and tested
-   B: Need more specific acceptance criteria
-   C: Some criteria need to be more measurable
-   D: Missing acceptance criteria for some requirements
-   E: Other - please specify
+- Confirm functional requirements are complete
+- Verify non-functional requirements address all concerns
+- Validate user stories cover all scenarios
+- Ensure acceptance criteria are testable
+- Generate requirements documents only after explicit user approval
 
 ## Output Files
 
