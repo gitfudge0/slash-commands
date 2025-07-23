@@ -1,150 +1,120 @@
-# Slash Commands - Structured Development Workflow System
+# Smart Development Workflow System
 
-A 5-phase development process with interactive questioning and comprehensive documentation for software projects.
-
-## Overview
-
-This markdown-based workflow system provides structured development through five sequential phases, ensuring thorough planning and quality outcomes.
-
-**Time**: 4.5-10.5 hours total | **Output**: Complete documentation + implementation-ready tasks
+Intelligent routing system that optimizes documentation time based on change complexity. Spend 2-3 minutes on simple changes, 5-8 minutes on medium complexity, 15-25 minutes only on novel features.
 
 ## Quick Start
 
 ```bash
-./concept.md → requirements.md → design.md → tasks.md → implement.md
+./start-workflow.md "Add pagination to user endpoints"
+./start-workflow.md  # Interactive mode
 ```
 
-**Start here**: Run `./concept.md` for any new development work. The system guides you through interactive questioning.
-
-## 5-Phase Process
+## Workflow Overview
 
 ```mermaid
-flowchart LR
-    A[📝 Concept<br/>30-60 min] --> B[📋 Requirements<br/>1-3 hours]
-    B --> C[🏗️ Design<br/>2-4 hours]  
-    C --> D[📋 Tasks<br/>1-2 hours]
-    D --> E[⚡ Implement<br/>Variable]
+graph TB
+    Start([./start-workflow.md]) --> InputCheck{Input provided?}
+    
+    %% Input Handling
+    InputCheck -->|Yes| ProcessInput[Process input parameter]
+    InputCheck -->|No| Prompt[Interactive prompt for input]
+    Prompt --> GetInput[User provides: Description/JIRA/GitHub URL]
+    ProcessInput --> Analyze[Complexity Analysis Engine]
+    GetInput --> Analyze
+    
+    %% Complexity Analysis
+    Analyze --> Discovery[Auto-Discovery Phase]
+    Discovery --> PatternScan[Scan codebase for existing patterns]
+    Discovery --> FileScan[Identify relevant files]
+    Discovery --> TechScan[Analyze technology stack]
+    
+    PatternScan --> ScoreCalc[Calculate Complexity Score]
+    FileScan --> ScoreCalc
+    TechScan --> ScoreCalc
+    
+    %% Scoring Logic
+    ScoreCalc --> ScoreFactors{<b>Scoring Factors:</b><br/>Pattern Recognition:<br/>• Existing patterns: -2pts<br/>• Extendable models: -1pt<br/>• New tech needed: +3pts<br/>• Arch changes: +2pts<br/><br/>Input Clarity:<br/>• Detailed reqs: -1pt<br/>• Vague desc: +2pts<br/>• External context: -1pt<br/><br/>Integration:<br/>• Single component: -1pt<br/>• Multiple systems: +2pts<br/>• New infrastructure: +3pts}
+    
+    ScoreFactors --> RouteDecision{Score?}
+    
+    %% Routing Decision
+    RouteDecision -->|≤ 0| ExpressRoute[Route to Express Mode]
+    RouteDecision -->|1-2| BalancedRoute[Route to Balanced Mode]
+    RouteDecision -->|≥ 3| ComprehensiveRoute[Route to Comprehensive Mode]
+    
+    %% Express Mode Flow (2-3 minutes)
+    ExpressRoute --> ExpressConfirm[Auto-Discovery Confirmation<br/>• Files to modify<br/>• Patterns found<br/>• Scope validation]
+    ExpressConfirm -->|User confirms| ExpressSpec[Generate Implementation Spec<br/>• Read files in parallel<br/>• Apply existing patterns<br/>• Generate complete solution]
+    ExpressSpec --> ExpressApproval[Single Approval Gate]
+    ExpressApproval -->|Approved| ExpressImplement[Direct Implementation<br/>Using cached context]
+    
+    %% Express Mode Output
+    ExpressImplement --> ExpressOutput[<b>Generated Content:</b><br/>📄 express-spec.md<br/>• Context analysis<br/>• Files to modify<br/>• Implementation code<br/>• Quality checklist]
+    
+    %% Balanced Mode Flow (5-8 minutes)
+    BalancedRoute --> BalancedReqs[Smart Requirements Phase<br/>• 2-3 targeted questions<br/>• Multiple choice options<br/>• Pattern-based suggestions]
+    BalancedReqs --> BalancedPlan[Implementation Planning<br/>• Adapt existing patterns<br/>• Identify new components<br/>• Integration strategy]
+    BalancedPlan --> BalancedImplement[Guided Implementation<br/>• Generate components<br/>• Apply patterns<br/>• Integration code]
+    
+    %% Balanced Mode Output
+    BalancedImplement --> BalancedOutput[<b>Generated Content:</b><br/>📄 requirements.md<br/>• EARS format requirements<br/>• Pattern analysis<br/>• Integration points<br/><br/>📄 implementation.md<br/>• Technical approach<br/>• Generated code<br/>• Testing strategy]
+    
+    %% Comprehensive Mode Flow (15-25 minutes)
+    ComprehensiveRoute --> CompReqs[Comprehensive Requirements<br/>• Concept clarification<br/>• Functional deep-dive<br/>• Non-functional analysis<br/>• Research integration]
+    CompReqs --> CompResearch[Research & Design Phase<br/>• Technology research<br/>• Architecture decisions<br/>• Design patterns<br/>• Integration analysis]
+    CompResearch --> CompTasks[Task Breakdown<br/>• Detailed task list<br/>• Dependencies mapping<br/>• Implementation sequence<br/>• Quality gates]
+    CompTasks --> CompImplement[Iterative Implementation<br/>• Task-by-task execution<br/>• Approval gates<br/>• Quality validation<br/>• Progress tracking]
+    
+    %% Comprehensive Mode Output
+    CompImplement --> CompOutput[<b>Generated Content:</b><br/>📄 requirements.md<br/>• Full EARS requirements<br/>• Research findings<br/>• User stories<br/>• Acceptance criteria<br/><br/>📄 design.md<br/>• Technical architecture<br/>• Design decisions<br/>• Integration patterns<br/>• Data models<br/><br/>📄 tasks.md<br/>• Detailed task breakdown<br/>• Implementation sequence<br/>• Dependencies<br/>• Quality gates<br/><br/>📄 implementation.md<br/>• Implementation progress<br/>• Decision rationale<br/>• Quality validation<br/>• Final deliverables]
+    
+    %% Styling
+    classDef expressClass fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef balancedClass fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef comprehensiveClass fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef analysisClass fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef outputClass fill:#fff9c4,stroke:#f57f17,stroke-width:3px
+    
+    class ExpressRoute,ExpressConfirm,ExpressSpec,ExpressApproval,ExpressImplement expressClass
+    class BalancedRoute,BalancedReqs,BalancedPlan,BalancedImplement balancedClass
+    class ComprehensiveRoute,CompReqs,CompResearch,CompTasks,CompImplement comprehensiveClass
+    class Analyze,Discovery,PatternScan,FileScan,TechScan,ScoreCalc,ScoreFactors analysisClass
+    class ExpressOutput,BalancedOutput,CompOutput outputClass
 ```
 
-### Phase 1: Concept (`concept.md`)
-- **Purpose**: Problem definition and solution approach
-- **Duration**: 30-60 minutes
-- **Output**: `tasks/<issue>/01-concept.md`
+## Three Workflow Modes
 
-### Phase 2: Requirements (`requirements.md`)
-- **Purpose**: Product Requirements Document with user stories
-- **Duration**: 1-3 hours  
-- **Output**: `tasks/<issue>/02-prd.md`
+### 🚀 Express Mode (2-3 minutes)
+- **Best for**: Extensions, bug fixes, small modifications
+- **Output**: 1 file (`express-spec.md`)
+- **Process**: Auto-discovery → Implementation spec → Direct implementation
 
-### Phase 3: Design (`design.md`)
-- **Purpose**: Technical architecture and UI component design
-- **Duration**: 2-4 hours
-- **Output**: `tasks/<issue>/03-tdd.md`
+### ⚖️ Balanced Mode (5-8 minutes)
+- **Best for**: New components with existing patterns
+- **Output**: 2 files (`requirements.md` + `implementation.md`)
+- **Process**: Smart requirements → Pattern analysis → Implementation
 
-### Phase 4: Tasks (`tasks.md`)
-- **Purpose**: Implementation planning with dependencies
-- **Duration**: 1-2 hours
-- **Output**: `tasks/<issue>/04-tasks.md`
-
-### Phase 5: Implementation (`implement.md`)
-- **Purpose**: Interactive execution with quality gates
-- **Duration**: Variable
-- **Output**: `tasks/<issue>/05-*.md` + code changes
+### 📚 Comprehensive Mode (15-25 minutes)
+- **Best for**: Novel features, architectural changes
+- **Output**: 4 files (`requirements.md`, `design.md`, `tasks.md`, `implementation.md`)
+- **Process**: Full requirements → Research & design → Task breakdown → Implementation
 
 ## File Organization
 
-Each project gets organized in `tasks/<issue-name>/` directories:
-
 ```
 tasks/
-└── user-authentication-system/     # kebab-case naming
-    ├── 01-concept.md               # Problem definition
-    ├── 02-prd.md                   # Requirements
-    ├── 03-tdd.md                   # Technical design
-    ├── 04-tasks.md                 # Implementation tasks
-    └── 05-*.md                     # Implementation logs
+└── <issue-name>/           # kebab-case naming
+    ├── express-spec.md     # Express mode
+    ├── requirements.md     # Balanced + Comprehensive
+    ├── implementation.md   # All modes
+    ├── design.md          # Comprehensive only
+    └── tasks.md           # Comprehensive only
 ```
 
-## Interactive Features
+## Examples
 
-### Question Format
-Easy-to-answer format with consistent responses:
+**Express**: `"Add pagination to user list endpoint"` → Found existing patterns → 2-minute implementation
 
-```
-Question 1: What authentication method?
-A) JWT tokens
-B) Session cookies
-C) OAuth integration  
-D) Multi-factor auth
-E) Other, I'll specify
+**Balanced**: `"Add password reset functionality"` → Some patterns, new component → 6-minute implementation
 
-Your answer: 1-B
-```
-
-### Multiple Selection
-```
-Question 2: Required features? (Select multiple)
-A) User registration
-B) Password reset
-C) Email verification
-
-Your answer: 2-A,C
-```
-
-## Key Features
-
-- **Interactive Questioning**: Prevents requirements gaps
-- **User Confirmation Gates**: Approval required between phases
-- **Rich Documentation**: Mermaid diagrams, ASCII wireframes, tables
-- **Component-by-Component UI Design**: Complete wireframe→flow→interactions→animations
-- **Quality Gates**: Built-in validation checkpoints
-- **Multiple Execution Modes**: Interactive, autonomous, or custom
-
-## Getting Started Example
-
-```bash
-# New authentication system
-./concept.md
-# Issue name: "user-authentication-system" 
-# → Creates: tasks/user-authentication-system/01-concept.md
-
-./requirements.md
-# → Creates: tasks/user-authentication-system/02-prd.md
-
-./design.md  
-# → Creates: tasks/user-authentication-system/03-tdd.md
-
-./tasks.md
-# → Creates: tasks/user-authentication-system/04-tasks.md
-
-./implement.md
-# → Creates: tasks/user-authentication-system/05-*.md + code
-```
-
-## Supporting Tools
-
-### Doc Generator (`doc-generator.md`)
-Independent README generation for any project - no workflow dependencies required.
-
-```bash
-./doc-generator.md
-# Analyzes current directory and generates README.md
-```
-
-## Best Practices
-
-1. **Never Skip Phases** - Each builds critical context
-2. **Complete All Questions** - Thorough input = better outcomes  
-3. **Use Confirmation Gates** - Review before proceeding
-4. **Choose Interactive Mode** - For complex/unfamiliar work
-5. **Maintain Clean Organization** - Use kebab-case naming
-
-## System Requirements
-
-- **Platform**: Any system with markdown support
-- **Dependencies**: None (pure markdown workflow)
-- **Testing**: Execute phases in sequence on sample issues
-
----
-
-🚀 **Ready to begin?** Run `./concept.md` to start your first structured development workflow.
+**Comprehensive**: `"Add real-time chat system"` → Novel domain, new architecture → 20-minute design + implementation
