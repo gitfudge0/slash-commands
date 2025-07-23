@@ -25,8 +25,8 @@ Generate code using combined requirements and pattern analysis.
 ## Generated Files
 
 Creates two files in `tasks/{issue-name}/`:
-1. `balanced-requirements.md` - Focused EARS requirements
-2. `balanced-implementation.md` - Implementation plan with generated code
+1. `requirements.md` - Focused EARS requirements
+2. `implementation.md` - Implementation plan with generated code
 
 ## Phase 1: Smart Requirements
 

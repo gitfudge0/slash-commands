@@ -28,10 +28,10 @@ Execute tasks one-by-one with approval gates and quality validation.
 ## Generated Files
 
 Creates four files in `tasks/{issue-name}/`:
-1. `comprehensive-requirements.md` - Full EARS requirements with research
-2. `comprehensive-design.md` - Technical design with architecture decisions  
-3. `comprehensive-tasks.md` - Detailed task breakdown with dependencies
-4. `comprehensive-log.md` - Implementation execution log
+1. `requirements.md` - Full EARS requirements with research
+2. `design.md` - Technical design with architecture decisions  
+3. `tasks.md` - Detailed task breakdown with dependencies
+4. `implementation.md` - Implementation execution log
 
 ## Phase 1: Comprehensive Requirements
 

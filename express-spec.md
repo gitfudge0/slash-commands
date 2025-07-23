@@ -37,7 +37,7 @@ Single approval gate followed by immediate code generation using cached context.
 
 ## Generated File
 
-Creates: `tasks/{issue-name}/express-spec.md`
+Creates: `tasks/{issue-name}/implementation.md`
 
 ## Express Spec Template
 

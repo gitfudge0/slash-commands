@@ -185,23 +185,23 @@ All generated files go in: `tasks/{issue-name}/`
 ### Express Mode Output
 ```
 tasks/add-user-pagination/
-└── express-spec.md       # Complete spec with implementation
+└── implementation.md       # Complete spec with implementation
 ```
 
 ### Balanced Mode Output  
 ```
 tasks/add-password-reset/
-├── balanced-requirements.md     # Focused requirements
-└── balanced-implementation.md   # Implementation plan + code
+├── requirements.md     # Focused requirements
+└── implementation.md   # Implementation plan + code
 ```
 
 ### Comprehensive Mode Output
 ```
 tasks/add-chat-system/
-├── comprehensive-requirements.md  # Full EARS requirements
-├── comprehensive-design.md        # Technical architecture
-├── comprehensive-tasks.md         # Task breakdown
-└── comprehensive-log.md          # Implementation execution
+├── requirements.md  # Full EARS requirements
+├── design.md        # Technical architecture
+├── tasks.md         # Task breakdown
+└── implementation.md          # Implementation execution
 ```
 
 ## Integration with Development Workflow
