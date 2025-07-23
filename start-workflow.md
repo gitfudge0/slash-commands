@@ -111,7 +111,7 @@ Based on user confirmation, routes to appropriate specialized workflow file.
 ## Express Mode Preview
 **Best for**: Extensions, bug fixes, small modifications
 **Time**: 2-3 minutes
-**Files created**: 1 (express-spec.md with implementation)
+**Files created**: 1 (implementation.md with complete spec)
 **Process**: Auto-discovery → Implementation spec → Single approval → Direct implementation
 
 ## Balanced Mode Preview  

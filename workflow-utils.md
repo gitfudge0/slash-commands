@@ -152,13 +152,10 @@ end
 ### Directory Structure Template
 ```
 tasks/{issue-name}/           # All files for single issue
-├── express-spec.md           # Express mode: single file with implementation
-├── balanced-requirements.md  # Balanced mode: focused requirements
-├── balanced-implementation.md # Balanced mode: implementation plan
-├── comprehensive-requirements.md # Comprehensive mode: full requirements
-├── comprehensive-design.md   # Comprehensive mode: technical design
-├── comprehensive-tasks.md    # Comprehensive mode: task breakdown
-├── comprehensive-log.md      # Comprehensive mode: execution log
+├── requirements.md           # Requirements (all modes)
+├── design.md                 # Design (comprehensive mode only)
+├── tasks.md                  # Task breakdown (comprehensive mode only)
+├── implementation.md         # Implementation (all modes)
 └── artifacts/               # Supporting files
     ├── diagrams/           # Mermaid diagrams, wireframes
     ├── research/           # Research findings, links
