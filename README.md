@@ -5,7 +5,7 @@ Intelligent routing system that optimizes documentation time based on change com
 ## TL;DR - One Command Setup
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gitfudge/slash-commands/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/gitfudge0/slash-commands/refs/heads/main/setup.sh | bash
 ```
 
 Then use: `~/.ai-workflows/start-workflow.md "your request"`

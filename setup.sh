@@ -3,7 +3,7 @@
 set -e
 
 WORKFLOW_DIR="$HOME/.ai-workflows"
-REPO_BASE="https://raw.githubusercontent.com/gitfudge/slash-commands/main"
+REPO_BASE="https://raw.githubusercontent.com/gitfudge0/slash-commands/main"
 
 echo "🔧 Setting up AI Workflows..."
 
