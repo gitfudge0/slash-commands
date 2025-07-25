@@ -10,6 +10,10 @@ curl -fsSL https://raw.githubusercontent.com/gitfudge0/slash-commands/refs/heads
 
 Then use: `~/.ai-workflows/start-workflow.md "your request"`
 
+## Kiro Spec Agent
+
+Sonny is an advanced agent for spec-driven development. It enables requirements, design, and task planning workflows for complex features, and supports agent hooks and steering files. See `sonny.md` for the full workflow and system prompt.
+
 ## Quick Start
 
 ```bash
@@ -112,6 +116,14 @@ graph TB
 
 ## File Organization
 
+### Core and Supporting Files
+
+- `start-workflow.md` - Main router and complexity analyzer
+- `express-spec.md`, `balanced-spec.md`, `comprehensive-spec.md` - Workflow specs for different complexity levels
+- `sonny.md` - Spec-driven agent for requirements, design, and task planning (advanced)
+- `quick-start.md`, `workflow-utils.md` - Supporting documentation
+- `README.md`, `AGENTS.md` - Documentation
+
 ```
 tasks/
 └── <issue-name>/           # kebab-case naming
@@ -121,6 +133,10 @@ tasks/
     ├── design.md          # Comprehensive only
     └── tasks.md           # Comprehensive only
 ```
+
+## Sonny Spec Workflow Example
+
+**Sonny**: For advanced, spec-driven features, use the Sonny agent. It guides you through requirements, design, and task planning for complex or novel features. See `sonny.md` for details.
 
 ## Examples
 

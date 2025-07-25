@@ -18,6 +18,7 @@ WORKFLOW_FILES=(
     "workflow-utils.md"
     "README.md"
     "AGENTS.md"
+    "sonny.md"
 )
 
 echo "📥 Downloading workflow files to $WORKFLOW_DIR..."
